@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software a la Medida — SIAE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button,input{border:none;outline:none;font-family:inherit;background:none}
+img,svg{display:block;max-width:100%}
+
+:root{
+  --navy:#050d1f;--navy2:#091428;--navy3:#0c1a33;
+  --cyan:#00d4ff;--cyan2:#00b8e6;--cyan3:#006aff;
+  --silver:#a8bcd4;--white:#eef4ff;
+  --glass-bg:rgba(9,20,40,.45);--glass-border:rgba(0,212,255,.12);--glass-blur:18px;
+  --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+  --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.45),-4px -4px 12px rgba(0,212,255,.04);
+  --shadow-glow:0 0 20px rgba(0,212,255,.25),0 0 60px rgba(0,212,255,.08);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
+  --max-w:1200px;--header-h:72px;
+  --bg-primary:var(--navy);--bg-secondary:var(--navy2);
+  --text-primary:var(--white);--text-secondary:var(--silver);--accent:var(--cyan);
+}
+[data-theme="light"]{
+  --navy:#f0f4f8;--navy2:#e2e8f0;--navy3:#d0d8e4;
+  --glass-bg:rgba(255,255,255,.55);--glass-border:rgba(0,106,255,.15);
+  --bg-primary:#f0f4f8;--bg-secondary:#e2e8f0;
+  --text-primary:#050d1f;--text-secondary:#3a4a5c;
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.08),-4px -4px 12px rgba(255,255,255,.7);
+  --shadow-glow:0 0 20px rgba(0,106,255,.15),0 0 60px rgba(0,106,255,.05);
+}
+[data-theme="light"] .grain-overlay{opacity:.03!important}
+[data-theme="light"] .ambient-blob{opacity:.12!important}
+
+body{
+  font-family:var(--font-body);font-weight:400;
+  color:var(--text-primary);background:var(--bg-primary);
+  line-height:1.6;
+  transition:background var(--t-med) var(--ease-out),color var(--t-med) var(--ease-out);
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15}
+p{color:var(--text-secondary);font-weight:300}
+.gradient-text{
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.container{width:90%;max-width:var(--max-w);margin:0 auto}
+.section{padding:var(--sp-2xl) 0}
+.section-label{
+  font-family:var(--font-body);font-weight:500;font-size:.85rem;
+  text-transform:uppercase;letter-spacing:3px;color:var(--cyan);margin-bottom:var(--sp-sm);
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:var(--sp-lg)}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 2rem;border-radius:var(--r-pill);
+  background:var(--white);color:#050d1f;
+  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  cursor:pointer;transition:all var(--t-fast) var(--ease-out);
+  position:relative;overflow:hidden;
+}
+[data-theme="light"] .btn-primary{background:#050d1f;color:#eef4ff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 2rem;border-radius:var(--r-pill);
+  border:1px solid rgba(0,212,255,.3);color:var(--cyan);
+  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  cursor:pointer;transition:all var(--t-fast) var(--ease-out);
+}
+.btn-outline:hover{background:var(--cyan);color:#050d1f;transform:translateY(-2px)}
+
+.glass-card{
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  border-radius:var(--r-lg);backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  box-shadow:var(--shadow-neo);padding:var(--sp-lg);
+  transition:all var(--t-fast) var(--ease-out);position:relative;overflow:hidden;
+}
+
+.grain-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045}
+.ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3}
+.blob-1{width:500px;height:500px;background:var(--cyan);top:-10%;left:-8%}
+.blob-2{width:400px;height:400px;background:var(--cyan3);bottom:10%;right:-5%}
+
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--header-h);display:flex;align-items:center;
+  transition:all var(--t-fast) var(--ease-out);
+}
+.header.scrolled{
+  background:rgba(5,13,31,.8);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,212,255,.08);
+}
+[data-theme="light"] .header.scrolled{background:rgba(240,244,248,.85)}
+.header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center}
+.logo-text{
+  font-family:var(--font-display);font-weight:800;font-size:1.6rem;letter-spacing:2px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.theme-toggle{
+  width:40px;height:40px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  backdrop-filter:blur(8px);transition:all var(--t-fast);
+}
+.theme-toggle:hover{border-color:var(--cyan);transform:scale(1.08)}
+.theme-toggle svg{width:18px;height:18px;fill:var(--cyan)}
+
+.page-hero{
+  min-height:50vh;display:flex;align-items:center;
+  padding-top:calc(var(--header-h) + var(--sp-xl));padding-bottom:var(--sp-xl);
+  position:relative;z-index:1;
+}
+.page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:var(--sp-md);letter-spacing:-1px}
+.page-hero .hero-desc{color:var(--text-secondary);font-size:1.1rem;max-width:650px;line-height:1.7;margin-bottom:var(--sp-lg)}
+.breadcrumb{font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--sp-md)}
+.breadcrumb a{color:var(--cyan);transition:opacity var(--t-fast)}
+.breadcrumb a:hover{opacity:.7}
+
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-lg)}
+.feature-card{padding:var(--sp-lg)}
+.feature-card .icon-box{
+  width:60px;height:60px;border-radius:var(--r-md);
+  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,106,255,.08));
+  border:1px solid rgba(0,212,255,.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
+}
+.feature-card .icon-box svg{width:28px;height:28px}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.7rem}
+.feature-card p{font-size:.9rem;line-height:1.6}
+
+.process-list{display:flex;flex-direction:column;gap:var(--sp-md);max-width:800px;margin:0 auto}
+.process-item{display:flex;gap:var(--sp-md);align-items:flex-start;padding:var(--sp-md) var(--sp-lg)}
+.process-num{
+  flex-shrink:0;width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:#fff;
+}
+.process-item h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.process-item p{font-size:.88rem;line-height:1.6}
+
+.cta-section{text-align:center;padding:var(--sp-2xl) 0}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:var(--sp-md)}
+.cta-section p{max-width:500px;margin:0 auto var(--sp-lg);font-size:1rem}
+
+.footer{position:relative;z-index:1;padding:var(--sp-lg) 0 var(--sp-md)}
+.footer-bottom{
+  border-top:1px solid rgba(0,212,255,.08);padding-top:var(--sp-md);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.8rem;color:var(--text-secondary);
+}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity var(--t-slow) var(--ease-out),transform var(--t-slow) var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .features-grid{grid-template-columns:1fr}
+  .page-hero h1{font-size:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<svg class="grain-overlay" width="100%" height="100%">
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>
+<div class="ambient-blob blob-1"></div>
+<div class="ambient-blob blob-2"></div>
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-text">SIAE</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z"/></svg>
+      </button>
+      <a href="index.html#contacto" class="btn-primary">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb reveal"><a href="index.html">Inicio</a> / <a href="index.html#servicios">Servicios</a> / Software a la Medida</div>
+    <h1 class="reveal"><span class="gradient-text">Software</span> a la Medida</h1>
+    <p class="hero-desc reveal">No todas las empresas funcionan igual, entonces ¿por qué usar el mismo software que todos? Construimos herramientas digitales que se adaptan a tu forma de trabajar, no al revés.</p>
+    <div class="reveal" style="display:flex;gap:var(--sp-sm);flex-wrap:wrap">
+      <a href="index.html#contacto" class="btn-primary">Solicitar consulta</a>
+      <a href="#como-funciona" class="btn-outline">Ver proceso</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="que-hacemos">
+  <div class="container">
+    <p class="section-label reveal">Lo que hacemos</p>
+    <h2 class="section-title reveal">Herramientas hechas para <span class="gradient-text">tu operación real</span></h2>
+    <div class="features-grid">
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M9 14l3 3 7-7" stroke="#00d4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Aplicaciones web y móviles</h3>
+        <p>Desde sistemas internos de gestión hasta apps para tus clientes. Construimos plataformas que tu equipo puede usar desde cualquier dispositivo, sin complicaciones.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M4 8l10 8 10-8" stroke="#00d4ff" stroke-width="1.5" fill="none"/></svg></div>
+        <h3>Portales de clientes</h3>
+        <p>Espacios donde tus clientes pueden hacer seguimiento a sus pedidos, consultar facturas, hacer solicitudes o comunicarse contigo. Profesional y fácil de usar.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="6" width="10" height="16" rx="2" stroke="#00d4ff" stroke-width="1.5" fill="none"/><rect x="16" y="2" width="10" height="24" rx="2" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M12 14h4" stroke="#00d4ff" stroke-width="1" stroke-dasharray="2 2"/></svg></div>
+        <h3>Sistemas de gestión interna</h3>
+        <p>ERPs, CRMs o herramientas de seguimiento diseñadas para cómo opera tu empresa. Sin funciones que no necesitas y con todas las que sí.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="4" stroke="#00d4ff" stroke-width="1.5" fill="none"/><path d="M14 2v4M14 22v4M2 14h4M22 14h4M5.5 5.5l2.8 2.8M19.7 19.7l2.8 2.8M5.5 22.5l2.8-2.8M19.7 8.3l2.8-2.8" stroke="#006aff" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+        <h3>Mantenimiento y evolución</h3>
+        <p>Tu negocio cambia, y tu software debe cambiar con él. Ofrecemos soporte continuo, actualizaciones y nuevas funcionalidades cuando las necesites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-funciona" style="background:var(--bg-secondary)">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">Proceso</p>
+    <h2 class="section-title reveal" style="text-align:center">Cómo lo <span class="gradient-text">construimos</span></h2>
+    <div class="process-list">
+      <div class="glass-card process-item reveal">
+        <div class="process-num">1</div>
+        <div><h3>Escuchamos tu necesidad</h3><p>Nos reunimos contigo para entender a fondo qué problema quieres resolver, quién va a usar la herramienta y qué resultados esperas. Sin supuestos.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">2</div>
+        <div><h3>Diseñamos la solución</h3><p>Te presentamos un prototipo visual — pantallas, flujos, estructura — para que veas cómo va a funcionar antes de que escribamos una sola línea de código.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">3</div>
+        <div><h3>Desarrollo por etapas</h3><p>Construimos por módulos y te mostramos avances cada semana. Si algo no te convence, lo ajustamos en el camino. Nada de sorpresas al final.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">4</div>
+        <div><h3>Lanzamiento y acompañamiento</h3><p>Ponemos el sistema en producción, capacitamos a tu equipo y nos quedamos disponibles para ajustes, mejoras y soporte técnico.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container reveal">
+    <h2>Tu empresa necesita herramientas que <span class="gradient-text">funcionen como tú trabajas</span></h2>
+    <p>Cuéntanos tu idea o tu problema y te proponemos una solución concreta.</p>
+    <a href="index.html#contacto" class="btn-primary">Hablar con nosotros</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 SIAE — Soluciones Integrales de Automatización Empresarial</p>
+      <p>Tecnología que trabaja para tu negocio.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
+const sunP='M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66l1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14l-1.41-1.41M12 7a5 5 0 100 10 5 5 0 000-10z';
+const moonP='M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z';
+toggle.addEventListener('click',()=>{
+  const d=document.body.getAttribute('data-theme')==='dark';
+  document.body.setAttribute('data-theme',d?'light':'dark');
+  icon.innerHTML=`<path d="${d?sunP:moonP}"/>`;
+});
+const header=document.getElementById('header');
+let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{header.classList.toggle('scrolled',window.scrollY>40);ticking=false});ticking=true}});
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');revObs.unobserve(entry.target)}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+</script>
+</body>
+</html>

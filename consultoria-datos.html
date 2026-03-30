@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultoría de Datos — SIAE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+button,input{border:none;outline:none;font-family:inherit;background:none}
+img,svg{display:block;max-width:100%}
+
+:root{
+  --navy:#050d1f;--navy2:#091428;--navy3:#0c1a33;
+  --cyan:#00d4ff;--cyan2:#00b8e6;--cyan3:#006aff;
+  --silver:#a8bcd4;--white:#eef4ff;
+  --glass-bg:rgba(9,20,40,.45);--glass-border:rgba(0,212,255,.12);--glass-blur:18px;
+  --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+  --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
+  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.45),-4px -4px 12px rgba(0,212,255,.04);
+  --shadow-glow:0 0 20px rgba(0,212,255,.25),0 0 60px rgba(0,212,255,.08);
+  --ease-out:cubic-bezier(.22,1,.36,1);
+  --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
+  --max-w:1200px;--header-h:72px;
+  --bg-primary:var(--navy);--bg-secondary:var(--navy2);
+  --text-primary:var(--white);--text-secondary:var(--silver);--accent:var(--cyan);
+}
+[data-theme="light"]{
+  --navy:#f0f4f8;--navy2:#e2e8f0;--navy3:#d0d8e4;
+  --glass-bg:rgba(255,255,255,.55);--glass-border:rgba(0,106,255,.15);
+  --bg-primary:#f0f4f8;--bg-secondary:#e2e8f0;
+  --text-primary:#050d1f;--text-secondary:#3a4a5c;
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.08),-4px -4px 12px rgba(255,255,255,.7);
+  --shadow-glow:0 0 20px rgba(0,106,255,.15),0 0 60px rgba(0,106,255,.05);
+}
+[data-theme="light"] .grain-overlay{opacity:.03!important}
+[data-theme="light"] .ambient-blob{opacity:.12!important}
+
+body{
+  font-family:var(--font-body);font-weight:400;
+  color:var(--text-primary);background:var(--bg-primary);
+  line-height:1.6;
+  transition:background var(--t-med) var(--ease-out),color var(--t-med) var(--ease-out);
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15}
+p{color:var(--text-secondary);font-weight:300}
+.gradient-text{
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.container{width:90%;max-width:var(--max-w);margin:0 auto}
+.section{padding:var(--sp-2xl) 0}
+.section-label{
+  font-family:var(--font-body);font-weight:500;font-size:.85rem;
+  text-transform:uppercase;letter-spacing:3px;color:var(--cyan);margin-bottom:var(--sp-sm);
+}
+.section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:var(--sp-lg)}
+
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 2rem;border-radius:var(--r-pill);
+  background:var(--white);color:#050d1f;
+  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  cursor:pointer;transition:all var(--t-fast) var(--ease-out);
+  position:relative;overflow:hidden;
+}
+[data-theme="light"] .btn-primary{background:#050d1f;color:#eef4ff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+
+.btn-outline{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 2rem;border-radius:var(--r-pill);
+  border:1px solid rgba(0,212,255,.3);color:var(--cyan);
+  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  cursor:pointer;transition:all var(--t-fast) var(--ease-out);
+}
+.btn-outline:hover{background:var(--cyan);color:#050d1f;transform:translateY(-2px)}
+
+.glass-card{
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  border-radius:var(--r-lg);backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  box-shadow:var(--shadow-neo);padding:var(--sp-lg);
+  transition:all var(--t-fast) var(--ease-out);position:relative;overflow:hidden;
+}
+
+.grain-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045}
+.ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3}
+.blob-1{width:500px;height:500px;background:var(--cyan);top:-10%;left:-8%}
+.blob-2{width:400px;height:400px;background:var(--cyan3);bottom:10%;right:-5%}
+
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  height:var(--header-h);display:flex;align-items:center;
+  transition:all var(--t-fast) var(--ease-out);
+}
+.header.scrolled{
+  background:rgba(5,13,31,.8);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,212,255,.08);
+}
+[data-theme="light"] .header.scrolled{background:rgba(240,244,248,.85)}
+.header .container{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center}
+.logo-text{
+  font-family:var(--font-display);font-weight:800;font-size:1.6rem;letter-spacing:2px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.theme-toggle{
+  width:40px;height:40px;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  backdrop-filter:blur(8px);transition:all var(--t-fast);
+}
+.theme-toggle:hover{border-color:var(--cyan);transform:scale(1.08)}
+.theme-toggle svg{width:18px;height:18px;fill:var(--cyan)}
+
+.page-hero{
+  min-height:50vh;display:flex;align-items:center;
+  padding-top:calc(var(--header-h) + var(--sp-xl));padding-bottom:var(--sp-xl);
+  position:relative;z-index:1;
+}
+.page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:var(--sp-md);letter-spacing:-1px}
+.page-hero .hero-desc{color:var(--text-secondary);font-size:1.1rem;max-width:650px;line-height:1.7;margin-bottom:var(--sp-lg)}
+.breadcrumb{font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--sp-md)}
+.breadcrumb a{color:var(--cyan);transition:opacity var(--t-fast)}
+.breadcrumb a:hover{opacity:.7}
+
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-lg)}
+.feature-card{padding:var(--sp-lg)}
+.feature-card .icon-box{
+  width:60px;height:60px;border-radius:var(--r-md);
+  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,106,255,.08));
+  border:1px solid rgba(0,212,255,.15);
+  display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
+}
+.feature-card .icon-box svg{width:28px;height:28px}
+.feature-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.7rem}
+.feature-card p{font-size:.9rem;line-height:1.6}
+
+.process-list{display:flex;flex-direction:column;gap:var(--sp-md);max-width:800px;margin:0 auto}
+.process-item{display:flex;gap:var(--sp-md);align-items:flex-start;padding:var(--sp-md) var(--sp-lg)}
+.process-num{
+  flex-shrink:0;width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:#fff;
+}
+.process-item h3{font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.process-item p{font-size:.88rem;line-height:1.6}
+
+.cta-section{text-align:center;padding:var(--sp-2xl) 0}
+.cta-section h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:var(--sp-md)}
+.cta-section p{max-width:500px;margin:0 auto var(--sp-lg);font-size:1rem}
+
+.footer{position:relative;z-index:1;padding:var(--sp-lg) 0 var(--sp-md)}
+.footer-bottom{
+  border-top:1px solid rgba(0,212,255,.08);padding-top:var(--sp-md);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.8rem;color:var(--text-secondary);
+}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity var(--t-slow) var(--ease-out),transform var(--t-slow) var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .features-grid{grid-template-columns:1fr}
+  .page-hero h1{font-size:2rem}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center}
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<svg class="grain-overlay" width="100%" height="100%">
+  <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/></filter>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>
+<div class="ambient-blob blob-1"></div>
+<div class="ambient-blob blob-2"></div>
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <span class="logo-text">SIAE</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:1rem">
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z"/></svg>
+      </button>
+      <a href="index.html#contacto" class="btn-primary">Contacto</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb reveal"><a href="index.html">Inicio</a> / <a href="index.html#servicios">Servicios</a> / Consultoría de Datos</div>
+    <h1 class="reveal"><span class="gradient-text">Consultoría</span> de Datos</h1>
+    <p class="hero-desc reveal">Convertimos la información que ya tiene tu empresa en decisiones claras y accionables. No necesitas ser experto en datos — nosotros nos encargamos de que los números te hablen en un idioma que entiendas.</p>
+    <div class="reveal" style="display:flex;gap:var(--sp-sm);flex-wrap:wrap">
+      <a href="index.html#contacto" class="btn-primary">Solicitar consulta</a>
+      <a href="#como-funciona" class="btn-outline">Ver proceso</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="que-hacemos">
+  <div class="container">
+    <p class="section-label reveal">Lo que hacemos</p>
+    <h2 class="section-title reveal">Tus datos tienen respuestas. <span class="gradient-text">Te ayudamos a encontrarlas.</span></h2>
+    <div class="features-grid">
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#006aff"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#00d4ff" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#006aff"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#00d4ff"/></svg></div>
+        <h3>Tableros de indicadores</h3>
+        <p>Creamos dashboards visuales donde puedes ver las métricas que importan para tu negocio: ventas, costos, rendimiento del equipo, todo en un solo vistazo actualizado en tiempo real.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <h3>Análisis de tendencias</h3>
+        <p>Revisamos tus datos históricos para identificar patrones: cuándo vendes más, qué productos rotan mejor, dónde se te van los costos. Con esa información, tomas mejores decisiones.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 22L10 14L16 18L24 6" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="6" r="2.5" fill="#006aff"/></svg></div>
+        <h3>Limpieza y organización de datos</h3>
+        <p>Si tu información está regada en Excel, correos y sistemas distintos, la unificamos, limpiamos y estructuramos para que puedas confiar en lo que ves.</p>
+      </div>
+      <div class="glass-card feature-card reveal">
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="4" width="24" height="20" rx="3" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M2 10h24" stroke="#00d4ff" stroke-width="1"/><path d="M10 10v14" stroke="#00d4ff" stroke-width="1" opacity=".5"/></svg></div>
+        <h3>Reportes ejecutivos</h3>
+        <p>Generamos informes claros y concretos para que presentes resultados a socios, inversionistas o tu propio equipo. Sin relleno, solo lo que necesitan saber.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="como-funciona" style="background:var(--bg-secondary)">
+  <div class="container">
+    <p class="section-label reveal" style="text-align:center">Proceso</p>
+    <h2 class="section-title reveal" style="text-align:center">Cómo lo <span class="gradient-text">implementamos</span></h2>
+    <div class="process-list">
+      <div class="glass-card process-item reveal">
+        <div class="process-num">1</div>
+        <div><h3>Entendemos tu negocio</h3><p>Antes de tocar un solo dato, necesitamos entender qué decisiones necesitas tomar y qué información te hace falta para tomarlas con confianza.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">2</div>
+        <div><h3>Recopilamos y ordenamos</h3><p>Juntamos toda la información relevante de tus diferentes fuentes, la limpiamos y la organizamos para que tenga sentido y sea confiable.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">3</div>
+        <div><h3>Analizamos y visualizamos</h3><p>Creamos los tableros y reportes que necesitas. Te mostramos qué dicen tus números y qué acciones puedes tomar a partir de ellos.</p></div>
+      </div>
+      <div class="glass-card process-item reveal">
+        <div class="process-num">4</div>
+        <div><h3>Te enseñamos a usarlo</h3><p>No te dejamos solo con un dashboard bonito. Te capacitamos para que tú y tu equipo puedan leer, interpretar y actuar sobre los datos sin depender de nosotros.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container reveal">
+    <h2>Deja de adivinar. <span class="gradient-text">Decide con datos.</span></h2>
+    <p>Cuéntanos qué información necesitas y te ayudamos a organizarla para que tome sentido.</p>
+    <a href="index.html#contacto" class="btn-primary">Hablar con nosotros</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2026 SIAE — Soluciones Integrales de Automatización Empresarial</p>
+      <p>Tecnología que trabaja para tu negocio.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const toggle=document.getElementById('themeToggle'),icon=document.getElementById('themeIcon');
+const sunP='M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66l1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14l-1.41-1.41M12 7a5 5 0 100 10 5 5 0 000-10z';
+const moonP='M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z';
+toggle.addEventListener('click',()=>{
+  const d=document.body.getAttribute('data-theme')==='dark';
+  document.body.setAttribute('data-theme',d?'light':'dark');
+  icon.innerHTML=`<path d="${d?sunP:moonP}"/>`;
+});
+const header=document.getElementById('header');
+let ticking=false;
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{header.classList.toggle('scrolled',window.scrollY>40);ticking=false});ticking=true}});
+const revObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('visible');revObs.unobserve(entry.target)}
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+</script>
+</body>
+</html>
