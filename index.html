@@ -23,23 +23,23 @@ img,svg{display:block;max-width:100%}
    LAYER 1 — DESIGN TOKENS
    ============================================ */
 :root{
-  --navy:#050d1f;
-  --navy2:#091428;
-  --navy3:#0c1a33;
-  --cyan:#00d4ff;
-  --cyan2:#00b8e6;
-  --cyan3:#006aff;
-  --silver:#a8bcd4;
-  --white:#eef4ff;
-  --glass-bg:rgba(9,20,40,.45);
-  --glass-border:rgba(0,212,255,.12);
+  --navy:#0a0a0a;
+  --navy2:#111111;
+  --navy3:#1a1a1a;
+  --cyan:#ff4d2d;
+  --cyan2:#e6381a;
+  --cyan3:#ff6b4a;
+  --silver:#9a9a9a;
+  --white:#f0f0f0;
+  --glass-bg:rgba(18,18,18,.55);
+  --glass-border:rgba(255,77,45,.12);
   --glass-blur:18px;
   --font-display:'Syne',sans-serif;
   --font-body:'DM Sans',sans-serif;
   --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
   --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.45),-4px -4px 12px rgba(0,212,255,.04);
-  --shadow-glow:0 0 20px rgba(0,212,255,.25),0 0 60px rgba(0,212,255,.08);
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.5),-4px -4px 12px rgba(255,77,45,.03);
+  --shadow-glow:0 0 20px rgba(255,77,45,.2),0 0 60px rgba(255,77,45,.06);
   --ease-out:cubic-bezier(.22,1,.36,1);
   --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
   --max-w:1200px;
@@ -52,17 +52,27 @@ img,svg{display:block;max-width:100%}
 }
 
 [data-theme="light"]{
-  --navy:#f0f4f8;--navy2:#e2e8f0;--navy3:#d0d8e4;
-  --glass-bg:rgba(255,255,255,.55);--glass-border:rgba(0,106,255,.15);
-  --bg-primary:#f0f4f8;--bg-secondary:#e2e8f0;
-  --text-primary:#050d1f;--text-secondary:#3a4a5c;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.08),-4px -4px 12px rgba(255,255,255,.7);
-  --shadow-glow:0 0 20px rgba(0,106,255,.15),0 0 60px rgba(0,106,255,.05);
+  --navy:#f4f1ec;--navy2:#eae6e0;--navy3:#ddd9d3;
+  --glass-bg:rgba(255,255,255,.65);--glass-border:rgba(0,0,0,.08);
+  --bg-primary:#f4f1ec;--bg-secondary:#eae6e0;
+  --text-primary:#1a1a1a;--text-secondary:#666666;
+  --shadow-neo:4px 4px 12px rgba(0,0,0,.06),-3px -3px 10px rgba(255,255,255,.8);
+  --shadow-glow:0 0 16px rgba(255,77,45,.1),0 0 40px rgba(255,77,45,.04);
 }
-[data-theme="light"] .grain-overlay{opacity:.03!important}
-[data-theme="light"] .ambient-blob{opacity:.12!important}
+[data-theme="light"] .grain-overlay{opacity:.02!important}
+[data-theme="light"] .ambient-blob{opacity:.06!important}
 [data-theme="light"] .particle{background:var(--cyan3)!important}
-[data-theme="light"] .city-svg{filter:brightness(1.6) saturate(.7)}
+[data-theme="light"] .city-svg{filter:brightness(1.8) saturate(.5) contrast(.9)}
+[data-theme="light"] .glass-card{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.06)}
+[data-theme="light"] .glass-card:hover{border-color:var(--cyan);background:rgba(255,255,255,.85)}
+[data-theme="light"] .btn-outline{border-color:rgba(0,0,0,.15);color:var(--text-primary)}
+[data-theme="light"] .btn-outline:hover{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+[data-theme="light"] .badge{background:rgba(255,77,45,.06);border-color:rgba(255,77,45,.15)}
+[data-theme="light"] .social-btn{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.08)}
+[data-theme="light"] .social-btn:hover{background:rgba(255,77,45,.08);border-color:var(--cyan)}
+[data-theme="light"] .contact-input{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.1);color:var(--text-primary)}
+[data-theme="light"] .service-card .icon-box{background:rgba(255,77,45,.06);border-color:rgba(255,77,45,.1)}
+[data-theme="light"] .nav{background:rgba(244,241,236,.96)!important}
 
 /* ============================================
    LAYER 2 — BASE
@@ -97,16 +107,16 @@ p{color:var(--text-secondary);font-weight:300}
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:var(--white);color:#050d1f;
+  background:var(--white);color:#0a0a0a;
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
   position:relative;overflow:hidden;
 }
-[data-theme="light"] .btn-primary{background:#050d1f;color:#eef4ff}
+[data-theme="light"] .btn-primary{background:var(--cyan);color:#fff}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
 .btn-primary::after{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(0,212,255,.15),transparent);
+  background:linear-gradient(135deg,rgba(255,77,45,.15),transparent);
   opacity:0;transition:opacity var(--t-fast);
 }
 .btn-primary:hover::after{opacity:1}
@@ -114,11 +124,11 @@ p{color:var(--text-secondary);font-weight:300}
 .btn-outline{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  border:1px solid rgba(0,212,255,.3);color:var(--cyan);
+  border:1px solid rgba(255,77,45,.3);color:var(--cyan);
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
 }
-.btn-outline:hover{background:var(--cyan);color:#050d1f;transform:translateY(-2px)}
+.btn-outline:hover{background:var(--cyan);color:#0a0a0a;transform:translateY(-2px)}
 
 .glass-card{
   background:var(--glass-bg);border:1px solid var(--glass-border);
@@ -129,7 +139,7 @@ p{color:var(--text-secondary);font-weight:300}
 }
 .glass-card::before{
   content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(0,212,255,.06),transparent 60%);
+  background:linear-gradient(135deg,rgba(255,77,45,.06),transparent 60%);
   opacity:0;transition:opacity var(--t-fast);border-radius:var(--r-lg);
 }
 .glass-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:var(--shadow-glow)}
@@ -138,7 +148,7 @@ p{color:var(--text-secondary);font-weight:300}
 .badge{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.45rem 1.1rem;border-radius:var(--r-pill);
-  background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);
+  background:rgba(255,77,45,.08);border:1px solid rgba(255,77,45,.2);
   font-size:.8rem;font-weight:500;color:var(--cyan);
 }
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
@@ -150,7 +160,7 @@ p{color:var(--text-secondary);font-weight:300}
 .ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3;transition:opacity var(--t-slow)}
 .blob-1{width:500px;height:500px;background:var(--cyan);top:-10%;left:-8%}
 .blob-2{width:400px;height:400px;background:var(--cyan3);bottom:10%;right:-5%}
-.blob-3{width:350px;height:350px;background:rgba(0,212,255,.5);top:50%;left:40%}
+.blob-3{width:350px;height:350px;background:rgba(255,77,45,.3);top:50%;left:40%}
 
 /* ============================================
    LAYER 6 — HEADER
@@ -161,10 +171,10 @@ p{color:var(--text-secondary);font-weight:300}
   transition:all var(--t-fast) var(--ease-out);
 }
 .header.scrolled{
-  background:rgba(5,13,31,.8);backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,212,255,.08);
+  background:rgba(10,10,10,.85);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);
 }
-[data-theme="light"] .header.scrolled{background:rgba(240,244,248,.85)}
+[data-theme="light"] .header.scrolled{background:rgba(244,241,236,.92);border-bottom:1px solid rgba(0,0,0,.06)}
 .header .container{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center}
 .logo-text{
@@ -222,8 +232,8 @@ p{color:var(--text-secondary);font-weight:300}
 .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
 .service-card .icon-box{
   width:60px;height:60px;border-radius:var(--r-md);
-  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,106,255,.08));
-  border:1px solid rgba(0,212,255,.15);
+  background:linear-gradient(135deg,rgba(255,77,45,.1),rgba(255,107,74,.08));
+  border:1px solid rgba(255,77,45,.15);
   display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
 }
 .service-card .icon-box svg{width:28px;height:28px}
@@ -236,8 +246,8 @@ p{color:var(--text-secondary);font-weight:300}
    ============================================ */
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg);position:relative}
 .steps-grid::before{
-  content:'';position:absolute;top:35px;left:15%;right:15%;height:2px;
-  background:linear-gradient(90deg,transparent,var(--cyan),var(--cyan3),transparent);opacity:.3;
+  content:'';position:absolute;top:35px;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);opacity:.5;
 }
 .step{text-align:center;position:relative;z-index:1}
 .step-num{
@@ -306,12 +316,12 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
   display:flex;align-items:center;justify-content:center;
   transition:all var(--t-fast);cursor:pointer;
 }
-.social-btn:hover{background:rgba(0,212,255,.15);border-color:var(--cyan);transform:translateY(-2px)}
+.social-btn:hover{background:rgba(255,77,45,.12);border-color:var(--cyan);transform:translateY(-2px)}
 .social-btn svg{width:18px;height:18px;fill:var(--text-secondary);transition:fill var(--t-fast)}
 .social-btn:hover svg{fill:var(--cyan)}
 
 .footer-bottom{
-  border-top:1px solid rgba(0,212,255,.08);padding-top:var(--sp-md);
+  border-top:1px solid rgba(255,255,255,.06);padding-top:var(--sp-md);
   display:flex;justify-content:space-between;align-items:center;
   font-size:.8rem;color:var(--text-secondary);
 }
@@ -348,10 +358,10 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
   body{cursor:auto}
   .btn-primary,.btn-outline,.nav-link,.theme-toggle,.social-btn,.contact-submit{cursor:auto}
   .nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;
-    flex-direction:column;background:rgba(5,13,31,.95);backdrop-filter:blur(16px);
+    flex-direction:column;background:rgba(10,10,10,.96);backdrop-filter:blur(16px);
     padding:var(--sp-md);gap:var(--sp-sm);border-bottom:1px solid var(--glass-border);
   }
-  [data-theme="light"] .nav{background:rgba(240,244,248,.95)}
+  [data-theme="light"] .nav{background:rgba(244,241,236,.97)!important}
   .nav.open{display:flex}
   .hamburger{display:flex}
   .hero-grid{grid-template-columns:1fr;text-align:center}
@@ -375,7 +385,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 }
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
 <!-- GRAIN -->
 <svg class="grain-overlay" width="100%" height="100%">
@@ -398,15 +408,14 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
     <nav class="nav" id="mainNav">
       <a href="#hero" class="nav-link">Inicio</a>
       <a href="#servicios" class="nav-link">Servicios</a>
-      <a href="#how" class="nav-link">Soluciones</a>
+      <a href="#how" class="nav-link">Cómo trabajamos</a>
       <a href="#equipo" class="nav-link">Sobre Nosotros</a>
       <a href="#contacto" class="nav-link">Contacto</a>
     </nav>
     <div class="header-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
-        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z"/></svg>
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z" fill="currentColor"/></svg>
       </button>
-      <a href="#contacto" class="btn-primary btn-header-cta">Comenzar</a>
       <div class="hamburger" id="hamburger" aria-label="Abrir menú">
         <span></span><span></span><span></span>
       </div>
@@ -419,11 +428,9 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
-        <div class="badge hero-tag reveal"><span class="badge-dot"></span>Tecnología Empresarial · Resultados Reales</div>
         <h1 class="reveal"><span class="gradient-text">Optimizamos</span> tu Operación.<br>Escalamos tu <span class="gradient-text">Negocio.</span></h1>
         <p class="hero-desc reveal">Diseñamos e implementamos soluciones tecnológicas que resuelven problemas reales de tu empresa. Automatización de procesos, análisis de datos y sistemas a la medida para que tu equipo se enfoque en lo que importa.</p>
         <div class="hero-buttons reveal">
-          <a href="#servicios" class="btn-primary">Descubre nuestras soluciones <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           <a href="#how" class="btn-outline">Cómo trabajamos</a>
         </div>
       </div>
@@ -433,22 +440,22 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <defs>
               <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
               <filter id="softglow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <linearGradient id="mD" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0c1a33"/><stop offset="100%" stop-color="#050d1f"/></linearGradient>
-              <linearGradient id="mL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#132240"/><stop offset="100%" stop-color="#091428"/></linearGradient>
-              <linearGradient id="wG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00d4ff"/><stop offset="100%" stop-color="#006aff"/></linearGradient>
-              <linearGradient id="cG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00d4ff" stop-opacity=".6"/><stop offset="100%" stop-color="#006aff" stop-opacity=".2"/></linearGradient>
-              <linearGradient id="pG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#091428"/><stop offset="100%" stop-color="#050d1f"/></linearGradient>
-              <radialGradient id="pR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#00d4ff" stop-opacity=".2"/><stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
+              <linearGradient id="mD" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#0a0a0a"/></linearGradient>
+              <linearGradient id="mL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#111111"/></linearGradient>
+              <linearGradient id="wG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff4d2d"/><stop offset="100%" stop-color="#ff6b4a"/></linearGradient>
+              <linearGradient id="cG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff4d2d" stop-opacity=".6"/><stop offset="100%" stop-color="#ff6b4a" stop-opacity=".2"/></linearGradient>
+              <linearGradient id="pG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#111111"/><stop offset="100%" stop-color="#0a0a0a"/></linearGradient>
+              <radialGradient id="pR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff4d2d" stop-opacity=".2"/><stop offset="100%" stop-color="#ff4d2d" stop-opacity="0"/></radialGradient>
             </defs>
             <!-- Platform -->
-            <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pG)" stroke="#00d4ff" stroke-opacity=".12" stroke-width="1"/>
+            <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pG)" stroke="#ff4d2d" stroke-opacity=".12" stroke-width="1"/>
             <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pR)"/>
-            <ellipse cx="210" cy="350" rx="180" ry="44" fill="none" stroke="#00d4ff" stroke-opacity=".25" stroke-width="1.5" filter="url(#softglow)"><animate attributeName="opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/></ellipse>
+            <ellipse cx="210" cy="350" rx="180" ry="44" fill="none" stroke="#ff4d2d" stroke-opacity=".25" stroke-width="1.5" filter="url(#softglow)"><animate attributeName="opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/></ellipse>
             <!-- Clouds -->
-            <g opacity=".35"><ellipse cx="80" cy="180" rx="50" ry="14" fill="#0c1a33"/><ellipse cx="100" cy="175" rx="35" ry="10" fill="#0c1a33" opacity=".6"/></g>
-            <g opacity=".25"><ellipse cx="340" cy="140" rx="45" ry="12" fill="#0c1a33"/><ellipse cx="355" cy="136" rx="30" ry="8" fill="#0c1a33" opacity=".5"/></g>
+            <g opacity=".35"><ellipse cx="80" cy="180" rx="50" ry="14" fill="#1a1a1a"/><ellipse cx="100" cy="175" rx="35" ry="10" fill="#1a1a1a" opacity=".6"/></g>
+            <g opacity=".25"><ellipse cx="340" cy="140" rx="45" ry="12" fill="#1a1a1a"/><ellipse cx="355" cy="136" rx="30" ry="8" fill="#1a1a1a" opacity=".5"/></g>
             <!-- Tower 1 center tall -->
-            <rect x="185" y="120" width="50" height="220" rx="3" fill="url(#mD)" stroke="#00d4ff" stroke-opacity=".2" stroke-width=".5"/>
+            <rect x="185" y="120" width="50" height="220" rx="3" fill="url(#mD)" stroke="#ff4d2d" stroke-opacity=".2" stroke-width=".5"/>
             <rect x="193" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".8"/><rect x="207" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="221" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="193" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".4"/><rect x="207" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".9"/><rect x="221" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".3"/>
             <rect x="193" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".6"/><rect x="207" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/><rect x="221" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/>
@@ -456,10 +463,10 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="193" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="207" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".8"/><rect x="221" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".3"/>
             <rect x="193" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/><rect x="207" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".6"/><rect x="221" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".9"/>
             <rect x="193" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".4"/><rect x="207" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="221" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/>
-            <line x1="210" y1="120" x2="210" y2="88" stroke="#0c1a33" stroke-width="3"/><line x1="210" y1="120" x2="210" y2="88" stroke="#00d4ff" stroke-opacity=".3" stroke-width="1"/>
-            <circle cx="210" cy="85" r="3" fill="#00d4ff" filter="url(#glow)"><animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/></circle>
+            <line x1="210" y1="120" x2="210" y2="88" stroke="#1a1a1a" stroke-width="3"/><line x1="210" y1="120" x2="210" y2="88" stroke="#ff4d2d" stroke-opacity=".3" stroke-width="1"/>
+            <circle cx="210" cy="85" r="3" fill="#ff4d2d" filter="url(#glow)"><animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/></circle>
             <!-- Tower 2 left -->
-            <rect x="118" y="170" width="42" height="170" rx="3" fill="url(#mL)" stroke="#00d4ff" stroke-opacity=".15" stroke-width=".5"/>
+            <rect x="118" y="170" width="42" height="170" rx="3" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".15" stroke-width=".5"/>
             <rect x="126" y="185" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/><rect x="138" y="185" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="126" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="138" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="126" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/><rect x="138" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/>
@@ -468,7 +475,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="126" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="138" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="126" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/><rect x="138" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/>
             <!-- Tower 3 right -->
-            <rect x="260" y="190" width="45" height="150" rx="3" fill="url(#mD)" stroke="#00d4ff" stroke-opacity=".2" stroke-width=".5"/>
+            <rect x="260" y="190" width="45" height="150" rx="3" fill="url(#mD)" stroke="#ff4d2d" stroke-opacity=".2" stroke-width=".5"/>
             <rect x="268" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/><rect x="280" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/><rect x="292" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="268" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/><rect x="280" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/><rect x="292" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/>
             <rect x="268" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="280" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="292" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/>
@@ -476,19 +483,19 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="268" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="280" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/><rect x="292" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="268" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="280" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/><rect x="292" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/>
             <!-- Tower 4 far left -->
-            <rect x="72" y="240" width="34" height="105" rx="2" fill="url(#mL)" stroke="#00d4ff" stroke-opacity=".12" stroke-width=".5"/>
+            <rect x="72" y="240" width="34" height="105" rx="2" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".12" stroke-width=".5"/>
             <rect x="79" y="252" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/><rect x="90" y="252" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="79" y="270" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/><rect x="90" y="270" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="79" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".9"/><rect x="90" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="79" y="306" width="6" height="8" rx="1" fill="url(#wG)" opacity=".3"/><rect x="90" y="306" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/>
             <!-- Tower 5 far right -->
-            <rect x="318" y="215" width="38" height="128" rx="2" fill="url(#mL)" stroke="#00d4ff" stroke-opacity=".15" stroke-width=".5"/>
+            <rect x="318" y="215" width="38" height="128" rx="2" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".15" stroke-width=".5"/>
             <rect x="325" y="228" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/><rect x="337" y="228" width="6" height="8" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="325" y="248" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/><rect x="337" y="248" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="325" y="268" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/><rect x="337" y="268" width="6" height="8" rx="1" fill="url(#wG)" opacity=".9"/>
             <rect x="325" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".3"/><rect x="337" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="325" y="308" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/><rect x="337" y="308" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/>
-            <line x1="337" y1="215" x2="337" y2="192" stroke="#091428" stroke-width="2"/><circle cx="337" cy="190" r="2" fill="#00d4ff" filter="url(#glow)"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
+            <line x1="337" y1="215" x2="337" y2="192" stroke="#111111" stroke-width="2"/><circle cx="337" cy="190" r="2" fill="#ff4d2d" filter="url(#glow)"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
             <!-- Connectors -->
             <path d="M160 260 Q175 240 185 250" stroke="url(#cG)" stroke-width="1.5" fill="none" filter="url(#glow)"/>
             <path d="M235 230 Q250 210 260 220" stroke="url(#cG)" stroke-width="1.5" fill="none" filter="url(#glow)"/>
@@ -509,25 +516,25 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
     <h2 class="section-title reveal">Soluciones que <span class="gradient-text">transforman operaciones empresariales</span></h2>
     <div class="services-grid">
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="6" stroke="#00d4ff" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="2.5" fill="#006aff"/><path d="M16 10h8M20 6v8" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="22" r="4" stroke="#006aff" stroke-width="1.2" fill="none"/><circle cx="18" cy="22" r="1.5" fill="#00d4ff"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="6" stroke="#ff4d2d" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="2.5" fill="#ff6b4a"/><path d="M16 10h8M20 6v8" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="22" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="none"/><circle cx="18" cy="22" r="1.5" fill="#ff4d2d"/></svg></div>
         <h3>Automatización Operativa</h3>
         <p>Eliminamos las tareas repetitivas que le quitan tiempo a tu equipo. Diseñamos flujos de trabajo que funcionan solos para que tu gente se dedique a lo estratégico.</p>
         <a href="automatizacion-operativa.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#006aff"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#00d4ff" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#006aff"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#00d4ff"/><path d="M5 16L11 10L17 13L25 4" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="4" r="2" fill="#00d4ff"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#ff6b4a"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#ff4d2d" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#ff6b4a"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#ff4d2d"/><path d="M5 16L11 10L17 13L25 4" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="4" r="2" fill="#ff4d2d"/></svg></div>
         <h3>Consultoría de Datos</h3>
         <p>Convertimos tus datos en decisiones claras. Te ayudamos a entender qué está pasando en tu negocio y hacia dónde va, con análisis que cualquier gerente puede usar.</p>
         <a href="consultoria-datos.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="#006aff" opacity=".8"/><rect x="10.5" y="2" width="7" height="7" rx="1.5" fill="#00d4ff" opacity=".6"/><rect x="19" y="2" width="7" height="7" rx="1.5" fill="#006aff"/><rect x="2" y="10.5" width="7" height="7" rx="1.5" fill="#00d4ff" opacity=".5"/><rect x="10.5" y="10.5" width="7" height="7" rx="1.5" fill="#006aff" opacity=".7"/><rect x="19" y="10.5" width="7" height="7" rx="1.5" fill="#00d4ff" opacity=".8"/><rect x="2" y="19" width="7" height="7" rx="1.5" fill="#006aff" opacity=".6"/><rect x="10.5" y="19" width="7" height="7" rx="1.5" fill="#00d4ff"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#006aff" opacity=".5"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".8"/><rect x="10.5" y="2" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".6"/><rect x="19" y="2" width="7" height="7" rx="1.5" fill="#ff6b4a"/><rect x="2" y="10.5" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".5"/><rect x="10.5" y="10.5" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".7"/><rect x="19" y="10.5" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".8"/><rect x="2" y="19" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".6"/><rect x="10.5" y="19" width="7" height="7" rx="1.5" fill="#ff4d2d"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".5"/></svg></div>
         <h3>Software a la Medida</h3>
         <p>Construimos herramientas digitales adaptadas a cómo opera tu empresa. Nada genérico: cada solución refleja tu proceso real, lista para usar desde el primer día.</p>
         <a href="software-medida.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#00d4ff" stroke-width="1.2" fill="rgba(0,212,255,.1)"/><circle cx="21" cy="7" r="4" stroke="#006aff" stroke-width="1.2" fill="rgba(0,106,255,.1)"/><circle cx="7" cy="21" r="4" stroke="#006aff" stroke-width="1.2" fill="rgba(0,106,255,.1)"/><circle cx="21" cy="21" r="4" stroke="#00d4ff" stroke-width="1.2" fill="rgba(0,212,255,.1)"/><line x1="11" y1="7" x2="17" y2="7" stroke="#00d4ff" stroke-opacity=".5" stroke-width="1"/><line x1="7" y1="11" x2="7" y2="17" stroke="#006aff" stroke-opacity=".5" stroke-width="1"/><line x1="21" y1="11" x2="21" y2="17" stroke="#00d4ff" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="21" x2="17" y2="21" stroke="#006aff" stroke-opacity=".5" stroke-width="1"/><line x1="10" y1="10" x2="18" y2="18" stroke="#00d4ff" stroke-opacity=".3" stroke-width=".8"/><line x1="18" y1="10" x2="10" y2="18" stroke="#006aff" stroke-opacity=".3" stroke-width=".8"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><circle cx="21" cy="7" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="rgba(255,107,74,.1)"/><circle cx="7" cy="21" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="rgba(255,107,74,.1)"/><circle cx="21" cy="21" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><line x1="11" y1="7" x2="17" y2="7" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/><line x1="7" y1="11" x2="7" y2="17" stroke="#ff6b4a" stroke-opacity=".5" stroke-width="1"/><line x1="21" y1="11" x2="21" y2="17" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="21" x2="17" y2="21" stroke="#ff6b4a" stroke-opacity=".5" stroke-width="1"/><line x1="10" y1="10" x2="18" y2="18" stroke="#ff4d2d" stroke-opacity=".3" stroke-width=".8"/><line x1="18" y1="10" x2="10" y2="18" stroke="#ff6b4a" stroke-opacity=".3" stroke-width=".8"/></svg></div>
         <h3>Integración de Sistemas</h3>
         <p>Conectamos las herramientas que ya usas — ERP, CRM, hojas de cálculo — para que toda tu información fluya en un solo lugar, sin duplicar trabajo.</p>
         <a href="integracion-sistemas.html" class="btn-outline">Explorar</a>
@@ -616,7 +623,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
       <div class="footer-col">
         <h4>Plataforma</h4>
         <a href="#servicios">Servicios</a>
-        <a href="#how">Soluciones</a>
+        <a href="#how">Cómo trabajamos</a>
         <a href="#equipo">Equipo</a>
       </div>
     </div>
@@ -633,9 +640,9 @@ const toggle=document.getElementById('themeToggle'),icon=document.getElementById
 const sunP='M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66l1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14l-1.41-1.41M12 7a5 5 0 100 10 5 5 0 000-10z';
 const moonP='M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z';
 toggle.addEventListener('click',()=>{
-  const d=document.body.getAttribute('data-theme')==='dark';
-  document.body.setAttribute('data-theme',d?'light':'dark');
-  icon.innerHTML=`<path d="${d?sunP:moonP}"/>`;
+  const isLight=document.body.getAttribute('data-theme')==='light';
+  document.body.setAttribute('data-theme',isLight?'dark':'light');
+  icon.innerHTML=`<path d="${isLight?sunP:moonP}"/>`;
 });
 
 /* ═══ HEADER SCROLL ═══ */

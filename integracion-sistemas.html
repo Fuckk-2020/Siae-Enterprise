@@ -17,15 +17,15 @@ button,input{border:none;outline:none;font-family:inherit;background:none}
 img,svg{display:block;max-width:100%}
 
 :root{
-  --navy:#050d1f;--navy2:#091428;--navy3:#0c1a33;
-  --cyan:#00d4ff;--cyan2:#00b8e6;--cyan3:#006aff;
-  --silver:#a8bcd4;--white:#eef4ff;
-  --glass-bg:rgba(9,20,40,.45);--glass-border:rgba(0,212,255,.12);--glass-blur:18px;
+  --navy:#0a0a0a;--navy2:#111111;--navy3:#1a1a1a;
+  --cyan:#ff4d2d;--cyan2:#e6381a;--cyan3:#ff6b4a;
+  --silver:#9a9a9a;--white:#f0f0f0;
+  --glass-bg:rgba(18,18,18,.55);--glass-border:rgba(255,77,45,.12);--glass-blur:18px;
   --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
   --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
   --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.45),-4px -4px 12px rgba(0,212,255,.04);
-  --shadow-glow:0 0 20px rgba(0,212,255,.25),0 0 60px rgba(0,212,255,.08);
+  --shadow-neo:6px 6px 16px rgba(0,0,0,.5),-4px -4px 12px rgba(255,77,45,.03);
+  --shadow-glow:0 0 20px rgba(255,77,45,.2),0 0 60px rgba(255,77,45,.06);
   --ease-out:cubic-bezier(.22,1,.36,1);
   --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
   --max-w:1200px;--header-h:72px;
@@ -33,15 +33,22 @@ img,svg{display:block;max-width:100%}
   --text-primary:var(--white);--text-secondary:var(--silver);--accent:var(--cyan);
 }
 [data-theme="light"]{
-  --navy:#f0f4f8;--navy2:#e2e8f0;--navy3:#d0d8e4;
-  --glass-bg:rgba(255,255,255,.55);--glass-border:rgba(0,106,255,.15);
-  --bg-primary:#f0f4f8;--bg-secondary:#e2e8f0;
-  --text-primary:#050d1f;--text-secondary:#3a4a5c;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.08),-4px -4px 12px rgba(255,255,255,.7);
-  --shadow-glow:0 0 20px rgba(0,106,255,.15),0 0 60px rgba(0,106,255,.05);
+  --navy:#f4f1ec;--navy2:#eae6e0;--navy3:#ddd9d3;
+  --glass-bg:rgba(255,255,255,.65);--glass-border:rgba(0,0,0,.08);
+  --bg-primary:#f4f1ec;--bg-secondary:#eae6e0;
+  --text-primary:#1a1a1a;--text-secondary:#666666;
+  --shadow-neo:4px 4px 12px rgba(0,0,0,.06),-3px -3px 10px rgba(255,255,255,.8);
+  --shadow-glow:0 0 16px rgba(255,77,45,.1),0 0 40px rgba(255,77,45,.04);
 }
-[data-theme="light"] .grain-overlay{opacity:.03!important}
-[data-theme="light"] .ambient-blob{opacity:.12!important}
+[data-theme="light"] .grain-overlay{opacity:.02!important}
+[data-theme="light"] .ambient-blob{opacity:.06!important}
+[data-theme="light"] .glass-card{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.06)}
+[data-theme="light"] .glass-card:hover{border-color:var(--cyan);background:rgba(255,255,255,.85)}
+[data-theme="light"] .btn-primary{background:var(--cyan);color:#fff}
+[data-theme="light"] .btn-outline{border-color:rgba(0,0,0,.15);color:var(--text-primary)}
+[data-theme="light"] .btn-outline:hover{background:var(--cyan);color:#fff;border-color:var(--cyan)}
+[data-theme="light"] .contact-input{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.1);color:var(--text-primary)}
+[data-theme="light"] .header.scrolled{background:rgba(244,241,236,.92);border-bottom:1px solid rgba(0,0,0,.06)}
 
 body{
   font-family:var(--font-body);font-weight:400;
@@ -66,22 +73,21 @@ p{color:var(--text-secondary);font-weight:300}
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:var(--white);color:#050d1f;
+  background:var(--white);color:#0a0a0a;
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
   position:relative;overflow:hidden;
 }
-[data-theme="light"] .btn-primary{background:#050d1f;color:#eef4ff}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
 
 .btn-outline{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  border:1px solid rgba(0,212,255,.3);color:var(--cyan);
+  border:1px solid rgba(255,77,45,.3);color:var(--cyan);
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
 }
-.btn-outline:hover{background:var(--cyan);color:#050d1f;transform:translateY(-2px)}
+.btn-outline:hover{background:var(--cyan);color:#0a0a0a;transform:translateY(-2px)}
 
 .glass-card{
   background:var(--glass-bg);border:1px solid var(--glass-border);
@@ -102,10 +108,9 @@ p{color:var(--text-secondary);font-weight:300}
   transition:all var(--t-fast) var(--ease-out);
 }
 .header.scrolled{
-  background:rgba(5,13,31,.8);backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,212,255,.08);
+  background:rgba(10,10,10,.8);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,77,45,.08);
 }
-[data-theme="light"] .header.scrolled{background:rgba(240,244,248,.85)}
 .header .container{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center}
 .logo-text{
@@ -138,8 +143,8 @@ p{color:var(--text-secondary);font-weight:300}
 .feature-card{padding:var(--sp-lg)}
 .feature-card .icon-box{
   width:60px;height:60px;border-radius:var(--r-md);
-  background:linear-gradient(135deg,rgba(0,212,255,.1),rgba(0,106,255,.08));
-  border:1px solid rgba(0,212,255,.15);
+  background:linear-gradient(135deg,rgba(255,77,45,.1),rgba(255,107,74,.08));
+  border:1px solid rgba(255,77,45,.15);
   display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
 }
 .feature-card .icon-box svg{width:28px;height:28px}
@@ -161,9 +166,33 @@ p{color:var(--text-secondary);font-weight:300}
 .cta-section h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:var(--sp-md)}
 .cta-section p{max-width:500px;margin:0 auto var(--sp-lg);font-size:1rem}
 
+/* CONTACT FORM */
+.contact-form{max-width:540px;margin:0 auto var(--sp-2xl);position:relative}
+.contact-form form{display:flex;flex-direction:column;gap:var(--sp-sm)}
+.contact-input{
+  width:100%;padding:1rem 1.5rem;border-radius:var(--r-md);
+  background:var(--glass-bg);border:1px solid var(--glass-border);
+  backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
+  color:var(--text-primary);font-size:.95rem;font-family:var(--font-body);
+  transition:border-color var(--t-fast);
+}
+.contact-input::placeholder{color:var(--text-secondary);opacity:.6}
+.contact-input:focus{border-color:var(--cyan)}
+textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md)}
+.contact-submit{
+  align-self:flex-start;
+  padding:.85rem 2rem;border-radius:var(--r-pill);
+  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  color:#fff;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--t-fast);
+}
+.contact-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+.form-status{text-align:center;padding:var(--sp-md);font-size:.95rem;display:none}
+.form-status.success{display:block;color:#00cc88}
+.form-status.error{display:block;color:#ff4444}
+
 .footer{position:relative;z-index:1;padding:var(--sp-lg) 0 var(--sp-md)}
 .footer-bottom{
-  border-top:1px solid rgba(0,212,255,.08);padding-top:var(--sp-md);
+  border-top:1px solid rgba(255,77,45,.08);padding-top:var(--sp-md);
   display:flex;justify-content:space-between;align-items:center;
   font-size:.8rem;color:var(--text-secondary);
 }
@@ -178,7 +207,7 @@ p{color:var(--text-secondary);font-weight:300}
 }
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 
 <svg class="grain-overlay" width="100%" height="100%">
   <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/></filter>
@@ -196,7 +225,7 @@ p{color:var(--text-secondary);font-weight:300}
       <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
         <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z"/></svg>
       </button>
-      <a href="index.html#contacto" class="btn-primary">Contacto</a>
+      <a href="#contacto" class="btn-primary">Contacto</a>
     </div>
   </div>
 </header>
@@ -207,7 +236,7 @@ p{color:var(--text-secondary);font-weight:300}
     <h1 class="reveal"><span class="gradient-text">Integración</span> de Sistemas</h1>
     <p class="hero-desc reveal">Tu empresa probablemente usa varias herramientas que no se hablan entre sí. Nosotros las conectamos para que la información fluya automáticamente y tu equipo deje de copiar y pegar datos de un lado a otro.</p>
     <div class="reveal" style="display:flex;gap:var(--sp-sm);flex-wrap:wrap">
-      <a href="index.html#contacto" class="btn-primary">Solicitar consulta</a>
+      <a href="#contacto" class="btn-primary">Solicitar consulta</a>
       <a href="#como-funciona" class="btn-outline">Ver proceso</a>
     </div>
   </div>
@@ -219,22 +248,22 @@ p{color:var(--text-secondary);font-weight:300}
     <h2 class="section-title reveal">Conectamos todo para que <span class="gradient-text">nada se pierda</span></h2>
     <div class="features-grid">
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#00d4ff" stroke-width="1.2" fill="rgba(0,212,255,.1)"/><circle cx="21" cy="7" r="4" stroke="#006aff" stroke-width="1.2" fill="rgba(0,106,255,.1)"/><circle cx="14" cy="21" r="4" stroke="#00d4ff" stroke-width="1.2" fill="rgba(0,212,255,.1)"/><line x1="10" y1="9" x2="12" y2="18" stroke="#00d4ff" stroke-opacity=".5" stroke-width="1"/><line x1="18" y1="9" x2="16" y2="18" stroke="#006aff" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="7" x2="17" y2="7" stroke="#00d4ff" stroke-opacity=".5" stroke-width="1"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><circle cx="21" cy="7" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="rgba(255,107,74,.1)"/><circle cx="14" cy="21" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><line x1="10" y1="9" x2="12" y2="18" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/><line x1="18" y1="9" x2="16" y2="18" stroke="#ff6b4a" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="7" x2="17" y2="7" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/></svg></div>
         <h3>Conexión ERP + CRM</h3>
         <p>Hacemos que tu sistema contable, tu gestión de clientes y tu inventario compartan información en tiempo real. Una venta en el CRM actualiza el inventario y la contabilidad sin que nadie lo haga a mano.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="8" width="10" height="12" rx="2" stroke="#00d4ff" stroke-width="1.5" fill="none"/><rect x="16" y="8" width="10" height="12" rx="2" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M12 14h4" stroke="#00d4ff" stroke-width="1.5" stroke-linecap="round"/><path d="M13 12l2 2-2 2" stroke="#00d4ff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="8" width="10" height="12" rx="2" stroke="#ff4d2d" stroke-width="1.5" fill="none"/><rect x="16" y="8" width="10" height="12" rx="2" stroke="#ff6b4a" stroke-width="1.5" fill="none"/><path d="M12 14h4" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round"/><path d="M13 12l2 2-2 2" stroke="#ff4d2d" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>APIs y conectores</h3>
         <p>Construimos puentes entre tus herramientas actuales — pasarelas de pago, plataformas de envío, sistemas bancarios — para que los datos fluyan sin intervención humana.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 6h20v4H4zM4 13h20v4H4zM4 20h20v4H4z" stroke="#006aff" stroke-width="1.2" fill="none"/><circle cx="22" cy="8" r="1.5" fill="#00d4ff"/><circle cx="22" cy="15" r="1.5" fill="#00d4ff"/><circle cx="22" cy="22" r="1.5" fill="#00d4ff"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 6h20v4H4zM4 13h20v4H4zM4 20h20v4H4z" stroke="#ff6b4a" stroke-width="1.2" fill="none"/><circle cx="22" cy="8" r="1.5" fill="#ff4d2d"/><circle cx="22" cy="15" r="1.5" fill="#ff4d2d"/><circle cx="22" cy="22" r="1.5" fill="#ff4d2d"/></svg></div>
         <h3>Migración de datos</h3>
         <p>Si estás cambiando de sistema o necesitas consolidar información de varias fuentes, nos encargamos de que todo se mueva sin perder un solo registro.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#006aff" stroke-width="1.5" fill="none"/><path d="M10 10h8v8h-8z" stroke="#00d4ff" stroke-width="1.5" fill="rgba(0,212,255,.1)"/><path d="M3 14h7M18 14h7M14 3v7M14 18v7" stroke="#00d4ff" stroke-width="1" stroke-opacity=".4"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#ff6b4a" stroke-width="1.5" fill="none"/><path d="M10 10h8v8h-8z" stroke="#ff4d2d" stroke-width="1.5" fill="rgba(255,77,45,.1)"/><path d="M3 14h7M18 14h7M14 3v7M14 18v7" stroke="#ff4d2d" stroke-width="1" stroke-opacity=".4"/></svg></div>
         <h3>Automatización entre plataformas</h3>
         <p>Cuando llega un pedido en tu tienda online, se genera automáticamente la orden de despacho, se notifica al cliente y se registra en contabilidad. Todo conectado, sin esfuerzo.</p>
       </div>
@@ -267,11 +296,22 @@ p{color:var(--text-secondary);font-weight:300}
   </div>
 </section>
 
-<section class="cta-section">
-  <div class="container reveal">
-    <h2>Deja de trabajar doble. <span class="gradient-text">Conecta tus sistemas.</span></h2>
-    <p>Cuéntanos qué herramientas usas y te mostramos cómo hacerlas trabajar juntas.</p>
-    <a href="index.html#contacto" class="btn-primary">Hablar con nosotros</a>
+<section class="section" id="contacto">
+  <div class="container">
+    <div style="text-align:center" class="reveal">
+      <p class="section-label">Contacto</p>
+      <h2 class="section-title">Cuéntanos qué herramientas usas y las conectamos por ti</h2>
+    </div>
+    <div class="contact-form reveal">
+      <form id="contactForm" action="https://formspree.io/f/mreogpvv" method="POST">
+        <input type="hidden" name="servicio" value="Integración de Sistemas">
+        <input type="text" name="nombre" class="contact-input" placeholder="Tu nombre" required aria-label="Nombre">
+        <input type="email" name="email" class="contact-input" placeholder="tu@empresa.com" required aria-label="Correo electrónico">
+        <textarea name="mensaje" class="contact-input" placeholder="Cuéntanos qué sistemas necesitas conectar..." required aria-label="Mensaje"></textarea>
+        <button class="contact-submit" type="submit">Enviar solicitud</button>
+      </form>
+      <div class="form-status" id="formStatus"></div>
+    </div>
   </div>
 </section>
 
@@ -289,9 +329,9 @@ const toggle=document.getElementById('themeToggle'),icon=document.getElementById
 const sunP='M12 4V2m0 20v-2m8-8h2M2 12h2m13.66-5.66l1.41-1.41M4.93 19.07l1.41-1.41m0-11.32L4.93 4.93m14.14 14.14l-1.41-1.41M12 7a5 5 0 100 10 5 5 0 000-10z';
 const moonP='M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8C13.06 3.04 12.54 3 12 3z';
 toggle.addEventListener('click',()=>{
-  const d=document.body.getAttribute('data-theme')==='dark';
-  document.body.setAttribute('data-theme',d?'light':'dark');
-  icon.innerHTML=`<path d="${d?sunP:moonP}"/>`;
+  const isLight=document.body.getAttribute('data-theme')==='light';
+  document.body.setAttribute('data-theme',isLight?'dark':'light');
+  icon.innerHTML=`<path d="${isLight?sunP:moonP}"/>`;
 });
 const header=document.getElementById('header');
 let ticking=false;
@@ -302,6 +342,29 @@ const revObs=new IntersectionObserver(entries=>{
   });
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+document.getElementById('contactForm').addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const form=e.target;
+  const btn=form.querySelector('.contact-submit');
+  const status=document.getElementById('formStatus');
+  btn.textContent='Enviando...';btn.disabled=true;
+  status.className='form-status';status.textContent='';
+  try{
+    const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});
+    if(res.ok){
+      status.className='form-status success';
+      status.textContent='Mensaje enviado. Te contactaremos pronto.';
+      form.reset();
+    }else{
+      throw new Error();
+    }
+  }catch{
+    status.className='form-status error';
+    status.textContent='Hubo un error al enviar. Intenta de nuevo o escríbenos a siaeenterprise@gmail.com';
+  }
+  btn.textContent='Enviar solicitud';btn.disabled=false;
+});
 </script>
 </body>
 </html>
