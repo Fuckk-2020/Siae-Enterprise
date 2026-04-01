@@ -17,63 +17,44 @@ button,input{border:none;outline:none;font-family:inherit;background:none}
 img,svg{display:block;max-width:100%}
 
 :root{
-  --navy:#0a0a0a;--navy2:#111111;--navy3:#1a1a1a;
-  --cyan:#ff4d2d;--cyan2:#e6381a;--cyan3:#ff6b4a;
-  --silver:#9a9a9a;--white:#f0f0f0;
-  --glass-bg:rgba(18,18,18,.55);--glass-border:rgba(255,77,45,.12);--glass-blur:18px;
+  --bg:#0b0b0b;--bg2:#151515;--bg3:#1c1c1c;
+  --accent:#9CA87C;--accent2:#8B9B6B;--accent3:#b0ba98;
+  --muted:#6b6b6b;--cream:#f5f0e8;--white:#ffffff;
+  --card-dark:#161616;--card-light:#f2ede4;
+  --glass-bg:#161616;--glass-border:rgba(255,255,255,.06);--glass-blur:0px;
   --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
   --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
-  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.5),-4px -4px 12px rgba(255,77,45,.03);
-  --shadow-glow:0 0 20px rgba(255,77,45,.2),0 0 60px rgba(255,77,45,.06);
-  --ease-out:cubic-bezier(.22,1,.36,1);
-  --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
+  --r-sm:8px;--r-md:16px;--r-lg:20px;--r-pill:999px;
+  --shadow-card:0 2px 8px rgba(0,0,0,.3);--shadow-hover:0 8px 24px rgba(0,0,0,.4);
+  --ease-out:cubic-bezier(.22,1,.36,1);--t-fast:.25s;--t-med:.5s;--t-slow:.7s;
   --max-w:1200px;--header-h:72px;
-  --bg-primary:var(--navy);--bg-secondary:var(--navy2);
-  --text-primary:var(--white);--text-secondary:var(--silver);--accent:var(--cyan);
+  --text-primary:var(--cream);--text-secondary:var(--muted);
 }
-[data-theme="light"]{
-  --navy:#f4f1ec;--navy2:#eae6e0;--navy3:#ddd9d3;
-  --glass-bg:rgba(255,255,255,.65);--glass-border:rgba(0,0,0,.08);
-  --bg-primary:#f4f1ec;--bg-secondary:#eae6e0;
-  --text-primary:#1a1a1a;--text-secondary:#666666;
-  --shadow-neo:4px 4px 12px rgba(0,0,0,.06),-3px -3px 10px rgba(255,255,255,.8);
-  --shadow-glow:0 0 16px rgba(255,77,45,.1),0 0 40px rgba(255,77,45,.04);
-}
-[data-theme="light"] .grain-overlay{opacity:.02!important}
-[data-theme="light"] .ambient-blob{opacity:.06!important}
-[data-theme="light"] .glass-card{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.06)}
-[data-theme="light"] .glass-card:hover{border-color:var(--cyan);background:rgba(255,255,255,.85)}
-[data-theme="light"] .btn-primary{background:var(--cyan);color:#fff}
-[data-theme="light"] .btn-outline{border-color:rgba(0,0,0,.15);color:var(--text-primary)}
-[data-theme="light"] .btn-outline:hover{background:var(--cyan);color:#fff;border-color:var(--cyan)}
-[data-theme="light"] .contact-input{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.1);color:var(--text-primary)}
-[data-theme="light"] .header.scrolled{background:rgba(244,241,236,.92);border-bottom:1px solid rgba(0,0,0,.06)}
 
 body{
   font-family:var(--font-body);font-weight:400;
-  color:var(--text-primary);background:var(--bg-primary);
+  color:var(--cream);background:var(--bg);
   line-height:1.6;
   transition:background var(--t-med) var(--ease-out),color var(--t-med) var(--ease-out);
 }
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15;color:var(--cream)}
 p{color:var(--text-secondary);font-weight:300}
 .gradient-text{
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--accent);
+  -webkit-background-clip:unset;-webkit-text-fill-color:unset;background-clip:unset;background:none;
 }
 .container{width:90%;max-width:var(--max-w);margin:0 auto}
 .section{padding:var(--sp-2xl) 0}
 .section-label{
   font-family:var(--font-body);font-weight:500;font-size:.85rem;
-  text-transform:uppercase;letter-spacing:3px;color:var(--cyan);margin-bottom:var(--sp-sm);
+  text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:var(--sp-sm);
 }
 .section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:var(--sp-lg)}
 
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:var(--white);color:#0a0a0a;
+  background:var(--accent);color:#1a1a1a;
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
   position:relative;overflow:hidden;
@@ -83,24 +64,23 @@ p{color:var(--text-secondary);font-weight:300}
 .btn-outline{
   display:inline-flex;align-items:center;gap:.5rem;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  border:1px solid rgba(255,77,45,.3);color:var(--cyan);
+  border:1px solid rgba(255,255,255,.15);color:var(--cream);background:transparent;
   font-family:var(--font-body);font-weight:500;font-size:.95rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
 }
-.btn-outline:hover{background:var(--cyan);color:#0a0a0a;transform:translateY(-2px)}
+.btn-outline:hover{background:var(--accent);color:#1a1a1a;transform:translateY(-2px)}
 
 .glass-card{
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  border-radius:var(--r-lg);backdrop-filter:blur(var(--glass-blur));
-  -webkit-backdrop-filter:blur(var(--glass-blur));
-  box-shadow:var(--shadow-neo);padding:var(--sp-lg);
+  background:var(--card-dark);border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--r-lg);
+  box-shadow:none;padding:var(--sp-lg);
   transition:all var(--t-fast) var(--ease-out);position:relative;overflow:hidden;
 }
 
-.grain-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045}
-.ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3}
-.blob-1{width:500px;height:500px;background:var(--cyan);top:-10%;left:-8%}
-.blob-2{width:400px;height:400px;background:var(--cyan3);bottom:10%;right:-5%}
+.grain-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045;display:none}
+.ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.15}
+.blob-1{width:500px;height:500px;background:var(--accent);top:-10%;left:-8%}
+.blob-2{width:400px;height:400px;background:var(--accent3);bottom:10%;right:-5%}
 
 .header{
   position:fixed;top:0;left:0;right:0;z-index:1000;
@@ -108,25 +88,17 @@ p{color:var(--text-secondary);font-weight:300}
   transition:all var(--t-fast) var(--ease-out);
 }
 .header.scrolled{
-  background:rgba(10,10,10,.8);backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,77,45,.08);
+  background:rgba(11,11,11,.95);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);
 }
 .header .container{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center}
 .logo-text{
   font-family:var(--font-display);font-weight:800;font-size:1.6rem;letter-spacing:2px;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--cream);
 }
 
-.theme-toggle{
-  width:40px;height:40px;border-radius:50%;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  backdrop-filter:blur(8px);transition:all var(--t-fast);
-}
-.theme-toggle:hover{border-color:var(--cyan);transform:scale(1.08)}
-.theme-toggle svg{width:18px;height:18px;fill:var(--cyan)}
+.theme-toggle{display:none}
 
 .page-hero{
   min-height:50vh;display:flex;align-items:center;
@@ -136,15 +108,15 @@ p{color:var(--text-secondary);font-weight:300}
 .page-hero h1{font-size:clamp(2.2rem,5vw,3.5rem);margin-bottom:var(--sp-md);letter-spacing:-1px}
 .page-hero .hero-desc{color:var(--text-secondary);font-size:1.1rem;max-width:650px;line-height:1.7;margin-bottom:var(--sp-lg)}
 .breadcrumb{font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--sp-md)}
-.breadcrumb a{color:var(--cyan);transition:opacity var(--t-fast)}
+.breadcrumb a{color:var(--accent);transition:opacity var(--t-fast)}
 .breadcrumb a:hover{opacity:.7}
 
 .features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-lg)}
 .feature-card{padding:var(--sp-lg)}
 .feature-card .icon-box{
   width:60px;height:60px;border-radius:var(--r-md);
-  background:linear-gradient(135deg,rgba(255,77,45,.1),rgba(255,107,74,.08));
-  border:1px solid rgba(255,77,45,.15);
+  background:linear-gradient(135deg,rgba(156,168,124,.1),rgba(176,186,152,.08));
+  border:1px solid rgba(156,168,124,.15);
   display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
 }
 .feature-card .icon-box svg{width:28px;height:28px}
@@ -155,7 +127,7 @@ p{color:var(--text-secondary);font-weight:300}
 .process-item{display:flex;gap:var(--sp-md);align-items:flex-start;padding:var(--sp-md) var(--sp-lg)}
 .process-num{
   flex-shrink:0;width:50px;height:50px;border-radius:50%;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  background:linear-gradient(135deg,var(--accent),var(--accent3));
   display:flex;align-items:center;justify-content:center;
   font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:#fff;
 }
@@ -171,19 +143,18 @@ p{color:var(--text-secondary);font-weight:300}
 .contact-form form{display:flex;flex-direction:column;gap:var(--sp-sm)}
 .contact-input{
   width:100%;padding:1rem 1.5rem;border-radius:var(--r-md);
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
-  color:var(--text-primary);font-size:.95rem;font-family:var(--font-body);
+  background:var(--bg2);border:1px solid rgba(255,255,255,.08);
+  color:var(--cream);font-size:.95rem;font-family:var(--font-body);
   transition:border-color var(--t-fast);
 }
 .contact-input::placeholder{color:var(--text-secondary);opacity:.6}
-.contact-input:focus{border-color:var(--cyan)}
+.contact-input:focus{border-color:var(--accent)}
 textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md)}
 .contact-submit{
   align-self:flex-start;
   padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  color:#fff;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--t-fast);
+  background:var(--accent);
+  color:#1a1a1a;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--t-fast);
 }
 .contact-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
 .form-status{text-align:center;padding:var(--sp-md);font-size:.95rem;display:none}
@@ -192,9 +163,9 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 
 .footer{position:relative;z-index:1;padding:var(--sp-lg) 0 var(--sp-md)}
 .footer-bottom{
-  border-top:1px solid rgba(255,77,45,.08);padding-top:var(--sp-md);
+  border-top:1px solid rgba(255,255,255,.06);padding-top:var(--sp-md);
   display:flex;justify-content:space-between;align-items:center;
-  font-size:.8rem;color:var(--text-secondary);
+  font-size:.8rem;color:var(--muted);
 }
 
 .reveal{opacity:0;transform:translateY(30px);transition:opacity var(--t-slow) var(--ease-out),transform var(--t-slow) var(--ease-out)}
@@ -207,7 +178,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 }
 </style>
 </head>
-<body data-theme="light">
+<body data-theme="dark">
 
 <svg class="grain-overlay" width="100%" height="100%">
   <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".75" numOctaves="4" stitchTiles="stitch"/></filter>
@@ -248,22 +219,22 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
     <h2 class="section-title reveal">Tus datos tienen respuestas. <span class="gradient-text">Te ayudamos a encontrarlas.</span></h2>
     <div class="features-grid">
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#ff6b4a"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#ff4d2d" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#ff6b4a"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#ff4d2d"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#b0ba98"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#9CA87C" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#b0ba98"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#9CA87C"/></svg></div>
         <h3>Tableros de indicadores</h3>
         <p>Creamos dashboards visuales donde puedes ver las métricas que importan para tu negocio: ventas, costos, rendimiento del equipo, todo en un solo vistazo actualizado en tiempo real.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#ff6b4a" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#b0ba98" stroke-width="1.5" fill="none"/><path d="M14 8v6l4 4" stroke="#9CA87C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
         <h3>Análisis de tendencias</h3>
         <p>Revisamos tus datos históricos para identificar patrones: cuándo vendes más, qué productos rotan mejor, dónde se te van los costos. Con esa información, tomas mejores decisiones.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 22L10 14L16 18L24 6" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="6" r="2.5" fill="#ff6b4a"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><path d="M4 22L10 14L16 18L24 6" stroke="#9CA87C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="6" r="2.5" fill="#b0ba98"/></svg></div>
         <h3>Limpieza y organización de datos</h3>
         <p>Si tu información está regada en Excel, correos y sistemas distintos, la unificamos, limpiamos y estructuramos para que puedas confiar en lo que ves.</p>
       </div>
       <div class="glass-card feature-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="4" width="24" height="20" rx="3" stroke="#ff6b4a" stroke-width="1.5" fill="none"/><path d="M2 10h24" stroke="#ff4d2d" stroke-width="1"/><path d="M10 10v14" stroke="#ff4d2d" stroke-width="1" opacity=".5"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="4" width="24" height="20" rx="3" stroke="#b0ba98" stroke-width="1.5" fill="none"/><path d="M2 10h24" stroke="#9CA87C" stroke-width="1"/><path d="M10 10v14" stroke="#9CA87C" stroke-width="1" opacity=".5"/></svg></div>
         <h3>Reportes ejecutivos</h3>
         <p>Generamos informes claros y concretos para que presentes resultados a socios, inversionistas o tu propio equipo. Sin relleno, solo lo que necesitan saber.</p>
       </div>
@@ -271,7 +242,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
   </div>
 </section>
 
-<section class="section" id="como-funciona" style="background:var(--bg-secondary)">
+<section class="section" id="como-funciona" style="background:var(--bg2)">
   <div class="container">
     <p class="section-label reveal" style="text-align:center">Proceso</p>
     <h2 class="section-title reveal" style="text-align:center">Cómo lo <span class="gradient-text">implementamos</span></h2>

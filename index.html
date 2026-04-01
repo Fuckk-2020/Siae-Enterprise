@@ -23,72 +23,50 @@ img,svg{display:block;max-width:100%}
    LAYER 1 — DESIGN TOKENS
    ============================================ */
 :root{
-  --navy:#0a0a0a;
-  --navy2:#111111;
-  --navy3:#1a1a1a;
-  --cyan:#ff4d2d;
-  --cyan2:#e6381a;
-  --cyan3:#ff6b4a;
-  --silver:#9a9a9a;
-  --white:#f0f0f0;
-  --glass-bg:rgba(18,18,18,.55);
-  --glass-border:rgba(255,77,45,.12);
-  --glass-blur:18px;
+  --bg:#0b0b0b;
+  --bg2:#151515;
+  --bg3:#1c1c1c;
+  --accent:#9CA87C;
+  --accent2:#8B9B6B;
+  --accent3:#b0ba98;
+  --muted:#6b6b6b;
+  --cream:#f5f0e8;
+  --white:#ffffff;
+  --card-dark:#161616;
+  --card-light:#f2ede4;
+  --glass-bg:#161616;
+  --glass-border:rgba(255,255,255,.06);
+  --glass-blur:0px;
   --font-display:'Syne',sans-serif;
   --font-body:'DM Sans',sans-serif;
   --sp-xs:0.5rem;--sp-sm:1rem;--sp-md:1.5rem;--sp-lg:2.5rem;--sp-xl:4rem;--sp-2xl:6rem;
-  --r-sm:8px;--r-md:14px;--r-lg:20px;--r-pill:999px;
-  --shadow-neo:6px 6px 16px rgba(0,0,0,.5),-4px -4px 12px rgba(255,77,45,.03);
-  --shadow-glow:0 0 20px rgba(255,77,45,.2),0 0 60px rgba(255,77,45,.06);
+  --r-sm:8px;--r-md:16px;--r-lg:20px;--r-pill:999px;
+  --shadow-card:0 2px 8px rgba(0,0,0,.3);
+  --shadow-hover:0 8px 24px rgba(0,0,0,.4);
   --ease-out:cubic-bezier(.22,1,.36,1);
   --t-fast:.25s;--t-med:.5s;--t-slow:.7s;
   --max-w:1200px;
   --header-h:72px;
-  --bg-primary:var(--navy);
-  --bg-secondary:var(--navy2);
-  --text-primary:var(--white);
-  --text-secondary:var(--silver);
-  --accent:var(--cyan);
+  --bg-primary:var(--bg);
+  --bg-secondary:var(--bg2);
+  --text-primary:var(--cream);
+  --text-secondary:var(--muted);
+  --cyan:var(--accent);
+  --cyan2:var(--accent2);
+  --cyan3:var(--accent3);
 }
-
-[data-theme="light"]{
-  --navy:#f4f1ec;--navy2:#eae6e0;--navy3:#ddd9d3;
-  --glass-bg:rgba(255,255,255,.65);--glass-border:rgba(0,0,0,.08);
-  --bg-primary:#f4f1ec;--bg-secondary:#eae6e0;
-  --text-primary:#1a1a1a;--text-secondary:#666666;
-  --shadow-neo:4px 4px 12px rgba(0,0,0,.06),-3px -3px 10px rgba(255,255,255,.8);
-  --shadow-glow:0 0 16px rgba(255,77,45,.1),0 0 40px rgba(255,77,45,.04);
-}
-[data-theme="light"] .grain-overlay{opacity:.02!important}
-[data-theme="light"] .ambient-blob{opacity:.06!important}
-[data-theme="light"] .particle{background:var(--cyan3)!important}
-[data-theme="light"] .city-svg{filter:brightness(1.8) saturate(.5) contrast(.9)}
-[data-theme="light"] .glass-card{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.06)}
-[data-theme="light"] .glass-card:hover{border-color:var(--cyan);background:rgba(255,255,255,.85)}
-[data-theme="light"] .btn-outline{border-color:rgba(0,0,0,.15);color:var(--text-primary)}
-[data-theme="light"] .btn-outline:hover{background:var(--cyan);color:#fff;border-color:var(--cyan)}
-[data-theme="light"] .badge{background:rgba(255,77,45,.06);border-color:rgba(255,77,45,.15)}
-[data-theme="light"] .social-btn{background:rgba(255,255,255,.6);border-color:rgba(0,0,0,.08)}
-[data-theme="light"] .social-btn:hover{background:rgba(255,77,45,.08);border-color:var(--cyan)}
-[data-theme="light"] .contact-input{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.1);color:var(--text-primary)}
-[data-theme="light"] .service-card .icon-box{background:rgba(255,77,45,.06);border-color:rgba(255,77,45,.1)}
-[data-theme="light"] .nav{background:rgba(244,241,236,.96)!important}
 
 /* ============================================
    LAYER 2 — BASE
    ============================================ */
 body{
   font-family:var(--font-body);font-weight:400;
-  color:var(--text-primary);background:var(--bg-primary);
+  color:var(--text-primary);background:var(--bg);
   line-height:1.6;
-  transition:background var(--t-med) var(--ease-out),color var(--t-med) var(--ease-out);
 }
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.15;color:var(--cream)}
 p{color:var(--text-secondary);font-weight:300}
-.gradient-text{
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
+.gradient-text{color:var(--accent);-webkit-text-fill-color:var(--accent)}
 
 /* ============================================
    LAYER 3 — LAYOUT
@@ -96,8 +74,8 @@ p{color:var(--text-secondary);font-weight:300}
 .container{width:90%;max-width:var(--max-w);margin:0 auto}
 .section{padding:var(--sp-2xl) 0}
 .section-label{
-  font-family:var(--font-body);font-weight:500;font-size:.85rem;
-  text-transform:uppercase;letter-spacing:3px;color:var(--cyan);margin-bottom:var(--sp-sm);
+  font-family:var(--font-body);font-weight:500;font-size:.8rem;
+  text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:var(--sp-sm);
 }
 .section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:var(--sp-lg)}
 
@@ -106,61 +84,44 @@ p{color:var(--text-secondary);font-weight:300}
    ============================================ */
 .btn-primary{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:var(--white);color:#0a0a0a;
-  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  padding:.75rem 1.8rem;border-radius:var(--r-pill);
+  background:var(--accent);color:#1a1a1a;
+  font-family:var(--font-body);font-weight:500;font-size:.9rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
-  position:relative;overflow:hidden;
 }
-[data-theme="light"] .btn-primary{background:var(--cyan);color:#fff}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
-.btn-primary::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(255,77,45,.15),transparent);
-  opacity:0;transition:opacity var(--t-fast);
-}
-.btn-primary:hover::after{opacity:1}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);background:var(--accent2)}
 
 .btn-outline{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.85rem 2rem;border-radius:var(--r-pill);
-  border:1px solid rgba(255,77,45,.3);color:var(--cyan);
-  font-family:var(--font-body);font-weight:500;font-size:.95rem;
+  padding:.75rem 1.8rem;border-radius:var(--r-pill);
+  border:1px solid rgba(255,255,255,.15);color:var(--cream);
+  font-family:var(--font-body);font-weight:500;font-size:.9rem;
   cursor:pointer;transition:all var(--t-fast) var(--ease-out);
+  background:transparent;
 }
-.btn-outline:hover{background:var(--cyan);color:#0a0a0a;transform:translateY(-2px)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
 
 .glass-card{
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  border-radius:var(--r-lg);backdrop-filter:blur(var(--glass-blur));
-  -webkit-backdrop-filter:blur(var(--glass-blur));
-  box-shadow:var(--shadow-neo);padding:var(--sp-lg);
-  transition:all var(--t-fast) var(--ease-out);position:relative;overflow:hidden;
+  background:var(--card-dark);border:1px solid rgba(255,255,255,.06);
+  border-radius:var(--r-lg);
+  box-shadow:none;padding:var(--sp-lg);
+  transition:all var(--t-fast) var(--ease-out);
 }
-.glass-card::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(135deg,rgba(255,77,45,.06),transparent 60%);
-  opacity:0;transition:opacity var(--t-fast);border-radius:var(--r-lg);
-}
-.glass-card:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:var(--shadow-glow)}
-.glass-card:hover::before{opacity:1}
+.glass-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
 
 .badge{
   display:inline-flex;align-items:center;gap:.5rem;
-  padding:.45rem 1.1rem;border-radius:var(--r-pill);
-  background:rgba(255,77,45,.08);border:1px solid rgba(255,77,45,.2);
-  font-size:.8rem;font-weight:500;color:var(--cyan);
+  padding:.4rem 1rem;border-radius:var(--r-pill);
+  background:rgba(156,168,124,.1);border:1px solid rgba(156,168,124,.2);
+  font-size:.8rem;font-weight:500;color:var(--accent);
 }
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s infinite}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
 
 /* ============================================
    LAYER 5 — GRAIN + AMBIENT
    ============================================ */
-.grain-overlay{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.045}
-.ambient-blob{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;opacity:.3;transition:opacity var(--t-slow)}
-.blob-1{width:500px;height:500px;background:var(--cyan);top:-10%;left:-8%}
-.blob-2{width:400px;height:400px;background:var(--cyan3);bottom:10%;right:-5%}
-.blob-3{width:350px;height:350px;background:rgba(255,77,45,.3);top:50%;left:40%}
+.grain-overlay{display:none}
+.ambient-blob{display:none}
 
 /* ============================================
    LAYER 6 — HEADER
@@ -171,75 +132,72 @@ p{color:var(--text-secondary);font-weight:300}
   transition:all var(--t-fast) var(--ease-out);
 }
 .header.scrolled{
-  background:rgba(10,10,10,.85);backdrop-filter:blur(16px);
+  background:rgba(11,11,11,.95);backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06);
 }
-[data-theme="light"] .header.scrolled{background:rgba(244,241,236,.92);border-bottom:1px solid rgba(0,0,0,.06)}
 .header .container{display:flex;align-items:center;justify-content:space-between}
 .logo{display:flex;align-items:center}
 .logo-text{
   font-family:var(--font-display);font-weight:800;font-size:1.6rem;letter-spacing:2px;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:var(--cream);
 }
 .nav{display:flex;align-items:center;gap:2rem}
 .nav-link{
   font-size:.82rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;
-  color:var(--text-secondary);transition:color var(--t-fast);position:relative;cursor:pointer;
+  color:var(--muted);transition:color var(--t-fast);position:relative;cursor:pointer;
 }
 .nav-link::after{
   content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
-  background:var(--cyan);transition:width var(--t-fast) var(--ease-out);
+  background:var(--accent);transition:width var(--t-fast) var(--ease-out);
 }
-.nav-link:hover{color:var(--text-primary)}
+.nav-link:hover{color:var(--cream)}
 .nav-link:hover::after{width:100%}
 .header-actions{display:flex;align-items:center;gap:1rem}
 
-.theme-toggle{
-  width:40px;height:40px;border-radius:50%;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  backdrop-filter:blur(8px);transition:all var(--t-fast);
-}
-.theme-toggle:hover{border-color:var(--cyan);transform:scale(1.08)}
-.theme-toggle svg{width:18px;height:18px;fill:var(--cyan)}
+.theme-toggle{display:none}
 
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
-.hamburger span{width:24px;height:2px;background:var(--text-primary);transition:all var(--t-fast)}
+.hamburger span{width:24px;height:2px;background:var(--cream);transition:all var(--t-fast)}
 
 /* ============================================
    LAYER 7 — HERO
    ============================================ */
 .hero{
   min-height:100vh;display:flex;align-items:center;
-  padding-top:calc(var(--header-h) + var(--sp-lg));position:relative;z-index:1;
+  padding-top:calc(var(--header-h) + var(--sp-xl));position:relative;z-index:1;
 }
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-xl);align-items:center}
+.hero-grid{display:flex;flex-direction:column;align-items:center;text-align:center}
 .hero-tag{margin-bottom:var(--sp-md)}
-.hero h1{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:var(--sp-md);letter-spacing:-1px}
-.hero-desc{color:var(--text-secondary);font-size:1.05rem;max-width:500px;margin-bottom:var(--sp-lg);line-height:1.7}
-.hero-buttons{display:flex;gap:var(--sp-sm);flex-wrap:wrap;margin-bottom:var(--sp-xl)}
-.hero-kpis{display:flex;gap:var(--sp-lg)}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.5rem);margin-bottom:var(--sp-md);letter-spacing:-1.5px;max-width:800px}
+.hero-desc{color:var(--muted);font-size:1.1rem;max-width:580px;margin:0 auto var(--sp-lg);line-height:1.7}
+.hero-buttons{display:flex;gap:var(--sp-sm);flex-wrap:wrap;justify-content:center;margin-bottom:var(--sp-xl)}
+.hero-kpis{display:flex;gap:var(--sp-lg);justify-content:center}
 .kpi-value{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800}
-.kpi-label{font-size:.78rem;color:var(--text-secondary);font-weight:400;margin-top:.15rem}
+.kpi-label{font-size:.78rem;color:var(--muted);font-weight:400;margin-top:.15rem}
 
-.hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative;margin-top:var(--sp-xl)}
 .city-container{animation:float 6s ease-in-out infinite;position:relative}
 
 /* ============================================
    LAYER 8 — SERVICIOS
    ============================================ */
-.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-md)}
 .service-card .icon-box{
-  width:60px;height:60px;border-radius:var(--r-md);
-  background:linear-gradient(135deg,rgba(255,77,45,.1),rgba(255,107,74,.08));
-  border:1px solid rgba(255,77,45,.15);
+  width:56px;height:56px;border-radius:12px;
+  background:rgba(156,168,124,.12);
+  border:none;
   display:flex;align-items:center;justify-content:center;margin-bottom:var(--sp-md);
 }
 .service-card .icon-box svg{width:28px;height:28px}
 .service-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.7rem}
 .service-card p{font-size:.88rem;line-height:1.6;margin-bottom:var(--sp-md)}
 .service-card .btn-outline{font-size:.82rem;padding:.6rem 1.4rem;position:relative;z-index:1}
+.service-card:nth-child(2),.service-card:nth-child(3){background:var(--card-light);border-color:transparent}
+.service-card:nth-child(2) h3,.service-card:nth-child(3) h3{color:#1a1a1a}
+.service-card:nth-child(2) p,.service-card:nth-child(3) p{color:#4a4a4a}
+.service-card:nth-child(2) .btn-outline,.service-card:nth-child(3) .btn-outline{border-color:rgba(0,0,0,.15);color:#1a1a1a;background:transparent}
+.service-card:nth-child(2) .btn-outline:hover,.service-card:nth-child(3) .btn-outline:hover{border-color:var(--accent2);color:var(--accent2)}
+.service-card:nth-child(2) .icon-box,.service-card:nth-child(3) .icon-box{background:rgba(156,168,124,.15)}
 
 /* ============================================
    LAYER 9 — HOW
@@ -247,15 +205,15 @@ p{color:var(--text-secondary);font-weight:300}
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg);position:relative}
 .steps-grid::before{
   content:'';position:absolute;top:35px;left:15%;right:15%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);opacity:.5;
+  background:rgba(255,255,255,.06);
 }
 .step{text-align:center;position:relative;z-index:1}
 .step-num{
-  width:70px;height:70px;border-radius:50%;margin:0 auto var(--sp-md);
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
+  width:64px;height:64px;border-radius:50%;margin:0 auto var(--sp-md);
+  background:var(--accent);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-display);font-weight:800;font-size:1.3rem;
-  color:#fff;box-shadow:var(--shadow-glow);
+  font-family:var(--font-display);font-weight:800;font-size:1.2rem;
+  color:#1a1a1a;
 }
 .step h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
 .step p{font-size:.88rem;max-width:280px;margin:0 auto}
@@ -267,12 +225,11 @@ p{color:var(--text-secondary);font-weight:300}
 .team-card{display:flex;gap:var(--sp-md);align-items:center}
 .avatar-ring{
   flex-shrink:0;width:100px;height:100px;border-radius:50%;
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));padding:3px;
-  box-shadow:var(--shadow-glow);
+  background:var(--accent);padding:3px;
 }
-.avatar-ring .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--navy2)}
+.avatar-ring .avatar-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg2)}
 .team-info h3{font-size:1.1rem;font-weight:700;margin-bottom:.2rem}
-.team-info .role{font-size:.82rem;color:var(--cyan);font-weight:500;margin-bottom:.4rem}
+.team-info .role{font-size:.82rem;color:var(--accent);font-weight:500;margin-bottom:.4rem}
 .team-info p{font-size:.85rem;line-height:1.5}
 
 .vision-badge{display:flex;align-items:center;gap:var(--sp-md);padding:var(--sp-md) var(--sp-lg);max-width:700px;margin:0 auto}
@@ -286,21 +243,20 @@ p{color:var(--text-secondary);font-weight:300}
 .contact-form form{display:flex;flex-direction:column;gap:var(--sp-sm)}
 .contact-input{
   width:100%;padding:1rem 1.5rem;border-radius:var(--r-md);
-  background:var(--glass-bg);border:1px solid var(--glass-border);
-  backdrop-filter:blur(var(--glass-blur));-webkit-backdrop-filter:blur(var(--glass-blur));
-  color:var(--text-primary);font-size:.95rem;font-family:var(--font-body);
+  background:var(--bg2);border:1px solid rgba(255,255,255,.08);
+  color:var(--cream);font-size:.95rem;font-family:var(--font-body);
   transition:border-color var(--t-fast);
 }
-.contact-input::placeholder{color:var(--text-secondary);opacity:.6}
-.contact-input:focus{border-color:var(--cyan)}
+.contact-input::placeholder{color:var(--muted);opacity:.6}
+.contact-input:focus{border-color:var(--accent)}
 textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md)}
 .contact-submit{
   align-self:flex-start;
-  padding:.85rem 2rem;border-radius:var(--r-pill);
-  background:linear-gradient(135deg,var(--cyan),var(--cyan3));
-  color:#fff;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--t-fast);
+  padding:.75rem 2rem;border-radius:var(--r-pill);
+  background:var(--accent);
+  color:#1a1a1a;font-weight:500;font-size:.95rem;cursor:pointer;transition:all var(--t-fast);
 }
-.contact-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-glow)}
+.contact-submit:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);background:var(--accent2)}
 .form-status{text-align:center;padding:var(--sp-md);font-size:.95rem;display:none}
 .form-status.success{display:block;color:#00cc88}
 .form-status.error{display:block;color:#ff4444}
@@ -308,22 +264,22 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 .footer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg);margin-bottom:var(--sp-xl)}
 .footer-col h4{font-size:.95rem;font-weight:700;margin-bottom:var(--sp-sm)}
 .footer-col p,.footer-col a{font-size:.85rem;color:var(--text-secondary);display:block;margin-bottom:.5rem;transition:color var(--t-fast)}
-.footer-col a:hover{color:var(--cyan)}
+.footer-col a:hover{color:var(--accent)}
 .social-links{display:flex;gap:.7rem}
 .social-btn{
   width:42px;height:42px;border-radius:50%;
-  background:var(--glass-bg);border:1px solid var(--glass-border);
+  background:var(--bg2);border:1px solid rgba(255,255,255,.08);
   display:flex;align-items:center;justify-content:center;
   transition:all var(--t-fast);cursor:pointer;
 }
-.social-btn:hover{background:rgba(255,77,45,.12);border-color:var(--cyan);transform:translateY(-2px)}
-.social-btn svg{width:18px;height:18px;fill:var(--text-secondary);transition:fill var(--t-fast)}
-.social-btn:hover svg{fill:var(--cyan)}
+.social-btn:hover{background:rgba(156,168,124,.12);border-color:var(--accent);transform:translateY(-2px)}
+.social-btn svg{width:18px;height:18px;fill:var(--muted);transition:fill var(--t-fast)}
+.social-btn:hover svg{fill:var(--accent)}
 
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.06);padding-top:var(--sp-md);
   display:flex;justify-content:space-between;align-items:center;
-  font-size:.8rem;color:var(--text-secondary);
+  font-size:.8rem;color:var(--muted);
 }
 
 /* ============================================
@@ -341,35 +297,26 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 
-.particles-container{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.particle{
-  position:absolute;width:3px;height:3px;border-radius:50%;
-  background:var(--cyan);opacity:0;
-  animation:particleDrift var(--duration,4s) var(--delay,0s) infinite;
-}
+.particles-container{display:none}
+.particle{display:none}
 
 /* ============================================
    LAYER 13 — RESPONSIVE
    ============================================ */
 @media(max-width:1024px){
-  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .services-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
   body{cursor:auto}
   .btn-primary,.btn-outline,.nav-link,.theme-toggle,.social-btn,.contact-submit{cursor:auto}
   .nav{display:none;position:absolute;top:var(--header-h);left:0;right:0;
-    flex-direction:column;background:rgba(10,10,10,.96);backdrop-filter:blur(16px);
-    padding:var(--sp-md);gap:var(--sp-sm);border-bottom:1px solid var(--glass-border);
+    flex-direction:column;background:rgba(11,11,11,.97);backdrop-filter:blur(16px);
+    padding:var(--sp-md);gap:var(--sp-sm);border-bottom:1px solid rgba(255,255,255,.06);
   }
-  [data-theme="light"] .nav{background:rgba(244,241,236,.97)!important}
   .nav.open{display:flex}
   .hamburger{display:flex}
-  .hero-grid{grid-template-columns:1fr;text-align:center}
-  .hero-desc{margin-left:auto;margin-right:auto}
-  .hero-buttons{justify-content:center}
-  .hero-kpis{justify-content:center}
-  .hero-visual{margin-top:var(--sp-lg)}
-  .hero-visual svg{width:280px;height:280px}
+  .hero h1{font-size:2.2rem}
+  .hero-visual{margin-top:var(--sp-md)}
   .services-grid{grid-template-columns:1fr}
   .steps-grid{grid-template-columns:1fr;gap:var(--sp-md)}
   .steps-grid::before{display:none}
@@ -385,7 +332,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
 }
 </style>
 </head>
-<body data-theme="light">
+<body data-theme="dark">
 
 <!-- GRAIN -->
 <svg class="grain-overlay" width="100%" height="100%">
@@ -431,31 +378,32 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
         <h1 class="reveal"><span class="gradient-text">Optimizamos</span> tu Operación.<br>Escalamos tu <span class="gradient-text">Negocio.</span></h1>
         <p class="hero-desc reveal">Diseñamos e implementamos soluciones tecnológicas que resuelven problemas reales de tu empresa. Automatización de procesos, análisis de datos y sistemas a la medida para que tu equipo se enfoque en lo que importa.</p>
         <div class="hero-buttons reveal">
+          <a href="#contacto" class="btn-primary">Solicitar consulta</a>
           <a href="#how" class="btn-outline">Cómo trabajamos</a>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="city-container">
+      <div class="hero-visual" style="display:none">
+        <div style="display:none">
           <svg class="city-svg" viewBox="0 0 420 420" width="420" height="420" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
               <filter id="softglow"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              <linearGradient id="mD" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#0a0a0a"/></linearGradient>
-              <linearGradient id="mL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#111111"/></linearGradient>
-              <linearGradient id="wG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ff4d2d"/><stop offset="100%" stop-color="#ff6b4a"/></linearGradient>
-              <linearGradient id="cG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ff4d2d" stop-opacity=".6"/><stop offset="100%" stop-color="#ff6b4a" stop-opacity=".2"/></linearGradient>
-              <linearGradient id="pG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#111111"/><stop offset="100%" stop-color="#0a0a0a"/></linearGradient>
-              <radialGradient id="pR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#ff4d2d" stop-opacity=".2"/><stop offset="100%" stop-color="#ff4d2d" stop-opacity="0"/></radialGradient>
+              <linearGradient id="mD" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+              <linearGradient id="mL" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#1e1e1e"/></linearGradient>
+              <linearGradient id="wG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9CA87C"/><stop offset="100%" stop-color="#b0ba98"/></linearGradient>
+              <linearGradient id="cG" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9CA87C" stop-opacity=".6"/><stop offset="100%" stop-color="#b0ba98" stop-opacity=".2"/></linearGradient>
+              <linearGradient id="pG" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e1e1e"/><stop offset="100%" stop-color="#222222"/></linearGradient>
+              <radialGradient id="pR" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#9CA87C" stop-opacity=".2"/><stop offset="100%" stop-color="#9CA87C" stop-opacity="0"/></radialGradient>
             </defs>
             <!-- Platform -->
-            <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pG)" stroke="#ff4d2d" stroke-opacity=".12" stroke-width="1"/>
+            <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pG)" stroke="#9CA87C" stroke-opacity=".12" stroke-width="1"/>
             <ellipse cx="210" cy="350" rx="170" ry="40" fill="url(#pR)"/>
-            <ellipse cx="210" cy="350" rx="180" ry="44" fill="none" stroke="#ff4d2d" stroke-opacity=".25" stroke-width="1.5" filter="url(#softglow)"><animate attributeName="opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/></ellipse>
+            <ellipse cx="210" cy="350" rx="180" ry="44" fill="none" stroke="#9CA87C" stroke-opacity=".25" stroke-width="1.5" filter="url(#softglow)"><animate attributeName="opacity" values=".7;1;.7" dur="3s" repeatCount="indefinite"/></ellipse>
             <!-- Clouds -->
-            <g opacity=".35"><ellipse cx="80" cy="180" rx="50" ry="14" fill="#1a1a1a"/><ellipse cx="100" cy="175" rx="35" ry="10" fill="#1a1a1a" opacity=".6"/></g>
-            <g opacity=".25"><ellipse cx="340" cy="140" rx="45" ry="12" fill="#1a1a1a"/><ellipse cx="355" cy="136" rx="30" ry="8" fill="#1a1a1a" opacity=".5"/></g>
+            <g opacity=".35"><ellipse cx="80" cy="180" rx="50" ry="14" fill="#2a2a2a"/><ellipse cx="100" cy="175" rx="35" ry="10" fill="#2a2a2a" opacity=".6"/></g>
+            <g opacity=".25"><ellipse cx="340" cy="140" rx="45" ry="12" fill="#2a2a2a"/><ellipse cx="355" cy="136" rx="30" ry="8" fill="#2a2a2a" opacity=".5"/></g>
             <!-- Tower 1 center tall -->
-            <rect x="185" y="120" width="50" height="220" rx="3" fill="url(#mD)" stroke="#ff4d2d" stroke-opacity=".2" stroke-width=".5"/>
+            <rect x="185" y="120" width="50" height="220" rx="3" fill="url(#mD)" stroke="#9CA87C" stroke-opacity=".2" stroke-width=".5"/>
             <rect x="193" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".8"/><rect x="207" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="221" y="140" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="193" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".4"/><rect x="207" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".9"/><rect x="221" y="165" width="8" height="10" rx="1" fill="url(#wG)" opacity=".3"/>
             <rect x="193" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".6"/><rect x="207" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/><rect x="221" y="190" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/>
@@ -463,10 +411,10 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="193" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="207" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".8"/><rect x="221" y="240" width="8" height="10" rx="1" fill="url(#wG)" opacity=".3"/>
             <rect x="193" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/><rect x="207" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".6"/><rect x="221" y="265" width="8" height="10" rx="1" fill="url(#wG)" opacity=".9"/>
             <rect x="193" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".4"/><rect x="207" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".5"/><rect x="221" y="290" width="8" height="10" rx="1" fill="url(#wG)" opacity=".7"/>
-            <line x1="210" y1="120" x2="210" y2="88" stroke="#1a1a1a" stroke-width="3"/><line x1="210" y1="120" x2="210" y2="88" stroke="#ff4d2d" stroke-opacity=".3" stroke-width="1"/>
-            <circle cx="210" cy="85" r="3" fill="#ff4d2d" filter="url(#glow)"><animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/></circle>
+            <line x1="210" y1="120" x2="210" y2="88" stroke="#2a2a2a" stroke-width="3"/><line x1="210" y1="120" x2="210" y2="88" stroke="#9CA87C" stroke-opacity=".3" stroke-width="1"/>
+            <circle cx="210" cy="85" r="3" fill="#9CA87C" filter="url(#glow)"><animate attributeName="r" values="2;4;2" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;1;.4" dur="2s" repeatCount="indefinite"/></circle>
             <!-- Tower 2 left -->
-            <rect x="118" y="170" width="42" height="170" rx="3" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".15" stroke-width=".5"/>
+            <rect x="118" y="170" width="42" height="170" rx="3" fill="url(#mL)" stroke="#9CA87C" stroke-opacity=".15" stroke-width=".5"/>
             <rect x="126" y="185" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/><rect x="138" y="185" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="126" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="138" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="126" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/><rect x="138" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/>
@@ -475,7 +423,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="126" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="138" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="126" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/><rect x="138" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/>
             <!-- Tower 3 right -->
-            <rect x="260" y="190" width="45" height="150" rx="3" fill="url(#mD)" stroke="#ff4d2d" stroke-opacity=".2" stroke-width=".5"/>
+            <rect x="260" y="190" width="45" height="150" rx="3" fill="url(#mD)" stroke="#9CA87C" stroke-opacity=".2" stroke-width=".5"/>
             <rect x="268" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/><rect x="280" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/><rect x="292" y="205" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="268" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/><rect x="280" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".9"/><rect x="292" y="225" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/>
             <rect x="268" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="280" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="292" y="245" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/>
@@ -483,19 +431,19 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <rect x="268" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".4"/><rect x="280" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".7"/><rect x="292" y="285" width="7" height="9" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="268" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".8"/><rect x="280" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".3"/><rect x="292" y="305" width="7" height="9" rx="1" fill="url(#wG)" opacity=".6"/>
             <!-- Tower 4 far left -->
-            <rect x="72" y="240" width="34" height="105" rx="2" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".12" stroke-width=".5"/>
+            <rect x="72" y="240" width="34" height="105" rx="2" fill="url(#mL)" stroke="#9CA87C" stroke-opacity=".12" stroke-width=".5"/>
             <rect x="79" y="252" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/><rect x="90" y="252" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="79" y="270" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/><rect x="90" y="270" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="79" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".9"/><rect x="90" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="79" y="306" width="6" height="8" rx="1" fill="url(#wG)" opacity=".3"/><rect x="90" y="306" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/>
             <!-- Tower 5 far right -->
-            <rect x="318" y="215" width="38" height="128" rx="2" fill="url(#mL)" stroke="#ff4d2d" stroke-opacity=".15" stroke-width=".5"/>
+            <rect x="318" y="215" width="38" height="128" rx="2" fill="url(#mL)" stroke="#9CA87C" stroke-opacity=".15" stroke-width=".5"/>
             <rect x="325" y="228" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/><rect x="337" y="228" width="6" height="8" rx="1" fill="url(#wG)" opacity=".5"/>
             <rect x="325" y="248" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/><rect x="337" y="248" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/>
             <rect x="325" y="268" width="6" height="8" rx="1" fill="url(#wG)" opacity=".6"/><rect x="337" y="268" width="6" height="8" rx="1" fill="url(#wG)" opacity=".9"/>
             <rect x="325" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".3"/><rect x="337" y="288" width="6" height="8" rx="1" fill="url(#wG)" opacity=".7"/>
             <rect x="325" y="308" width="6" height="8" rx="1" fill="url(#wG)" opacity=".8"/><rect x="337" y="308" width="6" height="8" rx="1" fill="url(#wG)" opacity=".4"/>
-            <line x1="337" y1="215" x2="337" y2="192" stroke="#111111" stroke-width="2"/><circle cx="337" cy="190" r="2" fill="#ff4d2d" filter="url(#glow)"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
+            <line x1="337" y1="215" x2="337" y2="192" stroke="#1e1e1e" stroke-width="2"/><circle cx="337" cy="190" r="2" fill="#9CA87C" filter="url(#glow)"><animate attributeName="opacity" values=".5;1;.5" dur="3s" repeatCount="indefinite"/></circle>
             <!-- Connectors -->
             <path d="M160 260 Q175 240 185 250" stroke="url(#cG)" stroke-width="1.5" fill="none" filter="url(#glow)"/>
             <path d="M235 230 Q250 210 260 220" stroke="url(#cG)" stroke-width="1.5" fill="none" filter="url(#glow)"/>
@@ -503,6 +451,7 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
             <path d="M106 290 Q113 275 118 285" stroke="url(#cG)" stroke-width="1" fill="none" filter="url(#glow)"/>
           </svg>
           <div class="particles-container" id="heroParticles"></div>
+        </div>
         </div>
       </div>
     </div>
@@ -516,27 +465,27 @@ textarea.contact-input{resize:vertical;min-height:100px;border-radius:var(--r-md
     <h2 class="section-title reveal">Soluciones que <span class="gradient-text">transforman operaciones empresariales</span></h2>
     <div class="services-grid">
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="6" stroke="#ff4d2d" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="2.5" fill="#ff6b4a"/><path d="M16 10h8M20 6v8" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="22" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="none"/><circle cx="18" cy="22" r="1.5" fill="#ff4d2d"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="10" cy="10" r="6" stroke="#9CA87C" stroke-width="1.5" fill="none"/><circle cx="10" cy="10" r="2.5" fill="#b0ba98"/><path d="M16 10h8M20 6v8" stroke="#9CA87C" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="22" r="4" stroke="#b0ba98" stroke-width="1.2" fill="none"/><circle cx="18" cy="22" r="1.5" fill="#9CA87C"/></svg></div>
         <h3>Automatización Operativa</h3>
         <p>Eliminamos las tareas repetitivas que le quitan tiempo a tu equipo. Diseñamos flujos de trabajo que funcionan solos para que tu gente se dedique a lo estratégico.</p>
         <a href="automatizacion-operativa.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#ff6b4a"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#ff4d2d" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#ff6b4a"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#ff4d2d"/><path d="M5 16L11 10L17 13L25 4" stroke="#ff4d2d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="4" r="2" fill="#ff4d2d"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="3" y="18" width="4" height="7" rx="1" fill="#b0ba98"/><rect x="9" y="13" width="4" height="12" rx="1" fill="#9CA87C" opacity=".7"/><rect x="15" y="8" width="4" height="17" rx="1" fill="#b0ba98"/><rect x="21" y="4" width="4" height="21" rx="1" fill="#9CA87C"/><path d="M5 16L11 10L17 13L25 4" stroke="#9CA87C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="4" r="2" fill="#9CA87C"/></svg></div>
         <h3>Consultoría de Datos</h3>
-        <p>Convertimos tus datos en decisiones claras. Te ayudamos a entender qué está pasando en tu negocio y hacia dónde va, con análisis que cualquier gerente puede usar.</p>
+        <p>Convertimos tus datos en decisiones claras. Te ayudamos a entender qué está pasando en tu negocio y hacia dónde va.</p>
         <a href="consultoria-datos.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".8"/><rect x="10.5" y="2" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".6"/><rect x="19" y="2" width="7" height="7" rx="1.5" fill="#ff6b4a"/><rect x="2" y="10.5" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".5"/><rect x="10.5" y="10.5" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".7"/><rect x="19" y="10.5" width="7" height="7" rx="1.5" fill="#ff4d2d" opacity=".8"/><rect x="2" y="19" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".6"/><rect x="10.5" y="19" width="7" height="7" rx="1.5" fill="#ff4d2d"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#ff6b4a" opacity=".5"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="#b0ba98" opacity=".8"/><rect x="10.5" y="2" width="7" height="7" rx="1.5" fill="#9CA87C" opacity=".6"/><rect x="19" y="2" width="7" height="7" rx="1.5" fill="#b0ba98"/><rect x="2" y="10.5" width="7" height="7" rx="1.5" fill="#9CA87C" opacity=".5"/><rect x="10.5" y="10.5" width="7" height="7" rx="1.5" fill="#b0ba98" opacity=".7"/><rect x="19" y="10.5" width="7" height="7" rx="1.5" fill="#9CA87C" opacity=".8"/><rect x="2" y="19" width="7" height="7" rx="1.5" fill="#b0ba98" opacity=".6"/><rect x="10.5" y="19" width="7" height="7" rx="1.5" fill="#9CA87C"/><rect x="19" y="19" width="7" height="7" rx="1.5" fill="#b0ba98" opacity=".5"/></svg></div>
         <h3>Software a la Medida</h3>
-        <p>Construimos herramientas digitales adaptadas a cómo opera tu empresa. Nada genérico: cada solución refleja tu proceso real, lista para usar desde el primer día.</p>
+        <p>Construimos herramientas digitales adaptadas a cómo opera tu empresa. Cada solución refleja tu proceso real, lista para usar desde el primer día.</p>
         <a href="software-medida.html" class="btn-outline">Explorar</a>
       </div>
       <div class="glass-card service-card reveal">
-        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><circle cx="21" cy="7" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="rgba(255,107,74,.1)"/><circle cx="7" cy="21" r="4" stroke="#ff6b4a" stroke-width="1.2" fill="rgba(255,107,74,.1)"/><circle cx="21" cy="21" r="4" stroke="#ff4d2d" stroke-width="1.2" fill="rgba(255,77,45,.1)"/><line x1="11" y1="7" x2="17" y2="7" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/><line x1="7" y1="11" x2="7" y2="17" stroke="#ff6b4a" stroke-opacity=".5" stroke-width="1"/><line x1="21" y1="11" x2="21" y2="17" stroke="#ff4d2d" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="21" x2="17" y2="21" stroke="#ff6b4a" stroke-opacity=".5" stroke-width="1"/><line x1="10" y1="10" x2="18" y2="18" stroke="#ff4d2d" stroke-opacity=".3" stroke-width=".8"/><line x1="18" y1="10" x2="10" y2="18" stroke="#ff6b4a" stroke-opacity=".3" stroke-width=".8"/></svg></div>
+        <div class="icon-box"><svg viewBox="0 0 28 28" fill="none"><circle cx="7" cy="7" r="4" stroke="#9CA87C" stroke-width="1.2" fill="rgba(156,168,124,.1)"/><circle cx="21" cy="7" r="4" stroke="#b0ba98" stroke-width="1.2" fill="rgba(176,186,152,.1)"/><circle cx="7" cy="21" r="4" stroke="#b0ba98" stroke-width="1.2" fill="rgba(176,186,152,.1)"/><circle cx="21" cy="21" r="4" stroke="#9CA87C" stroke-width="1.2" fill="rgba(156,168,124,.1)"/><line x1="11" y1="7" x2="17" y2="7" stroke="#9CA87C" stroke-opacity=".5" stroke-width="1"/><line x1="7" y1="11" x2="7" y2="17" stroke="#b0ba98" stroke-opacity=".5" stroke-width="1"/><line x1="21" y1="11" x2="21" y2="17" stroke="#9CA87C" stroke-opacity=".5" stroke-width="1"/><line x1="11" y1="21" x2="17" y2="21" stroke="#b0ba98" stroke-opacity=".5" stroke-width="1"/><line x1="10" y1="10" x2="18" y2="18" stroke="#9CA87C" stroke-opacity=".3" stroke-width=".8"/><line x1="18" y1="10" x2="10" y2="18" stroke="#b0ba98" stroke-opacity=".3" stroke-width=".8"/></svg></div>
         <h3>Integración de Sistemas</h3>
-        <p>Conectamos las herramientas que ya usas — ERP, CRM, hojas de cálculo — para que toda tu información fluya en un solo lugar, sin duplicar trabajo.</p>
+        <p>Conectamos las herramientas que ya usas — ERP, CRM, hojas de cálculo — para que toda tu información este en un solo lugar, sin duplicar trabajo.</p>
         <a href="integracion-sistemas.html" class="btn-outline">Explorar</a>
       </div>
     </div>
